@@ -1,0 +1,11 @@
+Tuesday, September 17th
+=======================
+
+Afternoon: Basic command line and BLAST
+---------------------------------------
+
+Logging in.
+Installing software.
+Downloading stuff.
+Batch BLAST.
+Processing BLAST output.
