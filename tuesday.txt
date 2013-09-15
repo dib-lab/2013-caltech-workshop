@@ -4,8 +4,15 @@ Tuesday, September 17th
 Afternoon: Basic command line and BLAST
 ---------------------------------------
 
+Lecture: welcome & introduction; goals.
+
+Creating an EC2 account.
 Logging in.
 Installing software.
 Downloading stuff.
-Batch BLAST.
-Processing BLAST output.
+Batch BLAST (E. coli vs.)
+Processing BLAST output: output to CSV
+Processing BLAST output: reciprocal best hit to ortholog.
+
+http://ged.msu.edu/angus/tutorials-2013/running-command-line-blast.html
+

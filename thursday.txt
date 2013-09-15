@@ -4,5 +4,15 @@ Thursday, September 19th
 Morning: annotation
 -------------------
 
+Lecture: How annotation works.
+
+Prokka.
+
 Afternoon: automation
 ---------------------
+
+Lecture: how computers work.
+shell scripting
+pipelines
+version control
+automating some stuff

@@ -4,6 +4,38 @@ Wednesday, September 18th
 Morning: Short reads & mapping
 ------------------------------
 
-Afternoon: Assembly
--------------------
+Lecture: sequencing basics.
 
+Mapping reads:
+http://www.ncbi.nlm.nih.gov/pubmed/22522955
+http://www.ebi.ac.uk/ena/data/view/SRA048664  (see files athyra:~t/cit/)
+
+Building a SAM file.
+Calling SNPs
+Tablet.
+
+http://ged.msu.edu/angus/tutorials-2013/bwa-tutorial.html
+
+Afternoon: QC; Assembly
+-----------------------
+
+Assembly exercise?
+
+Looking at mapping mismatches:
+http://ged.msu.edu/angus/tutorials-2013/plot-mapping-mismatches.html
+
+
+Quality trimming
+QC and FASTQ:
+http://ged.msu.edu/angus/tutorials-2013/short-read-quality-evaluation.html
+
+Assembling E. coli
+http://ged.msu.edu/angus/tutorials-2013/assembling-ecoli-with-velvet.html
+Velvet
+SPADES
+idba
+
+Evaluating assemblies.
+Comparing assemblies. (?)
+
+Q: Do we want to do the assembly & mapping exercise?)
