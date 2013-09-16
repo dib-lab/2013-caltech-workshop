@@ -9,6 +9,20 @@ Lecture: sequencing basics
 
 Mapping with bwa
 *****************
+
+One of the most common operations when dealing with NGS data is mapping sequences
+to other sequences, and most commonly, mapping reads to a reference. Because
+short read alignment is so common, there is a deluge of programs available for doing
+it, and it is well-understood problem. Most of the efficient programs work by first
+building an *index* of the sequence that will be mapped to, which allows for
+extremely fast lookups, and then running a separate module which uses that index
+to align short sequences against the reference. Alignment is used for visualization,
+coverage estimation, SNP calling, expression analysis, and a slew of other problems.
+For a high-level overview, try `this NCBI review <http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2836519/>`__.
+
+Getting the Dependencies
+````````````````````````
+
 bwa is a tool meant for quickly aligning short reads to a reference. While there
 are more mappers out there than anyone would care to enumerate, bwa is a good
 "reference" version of the most common algorithm and is relatively popular.
@@ -16,9 +30,7 @@ are more mappers out there than anyone would care to enumerate, bwa is a good
 Firstly, let's download bwa::
 
     cd /root
-    curl -L "http://downloads.sourceforge.net/project/bio-bwa/bwa-0.7.5a.tar.bz2?r=\
-    http%3A%2F%2Fsourceforge.net%2Fprojects%2Fbio-bwa%2Ffiles%2F&ts=1379347638&use_\
-    mirror=softlayer-dal" > bwa-0.7.5a.tar.bz2
+    curl -L "http://downloads.sourceforge.net/project/bio-bwa/bwa-0.7.5a.tar.bz2?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fbio-bwa%2Ffiles%2F&ts=1379347638&use_mirror=softlayer-dal" > bwa-0.7.5a.tar.bz2
 
 And then decompress it::
 
@@ -66,7 +78,41 @@ PATH so that our scripts now where to find it::
     source ~/.bashrc
 
 
+Get Some Test Data
+```````````````````
 
+We've got the programs we need, so now let's get some data to play with. Everybody
+*loves* ecoli, so we'll grab a reference genome of the k-12 strain. The program
+we'll use is called curl, which grabs data from a URL and spits it out to
+the terminal; using the > sign, we can direct that output into a file, like so::
+
+    curl http://www.genome.wisc.edu/pub/sequence/U00096.2.fas > ecoli_k12.fa
+
+The > sign is a general UNIX construct for redirecting a 'stream' to a file. You'll
+see it relatively often.
+
+We've got a reference genome, 
+curl -O https://s3.amazonaws.com/public.ged.msu.edu/ecoli_ref-5m.fastq.gz
+
+# split the paired reads into their left and right components 
+python /usr/local/share/khmer/scripts/split-paired-reads.py ecoli_ref-5m.fastq.gz 
+
+
+# build the FM-index of the reference for the alignment algorithm
+bwa index -a bwtsw ecoli_k12.fa 
+
+# just grab a subset of the reads for demonstration purposes
+head -n 50000 ecoli_ref-5m.fastq.gz.1 > left.fa
+head -n 50000 ecoli_ref-5m.fastq.gz.2 > right.fa
+
+# perform the alignment using bwa mem and output to same
+bwa mem -t 4 ecoli_k12.fa left.fa right.fa > aln.x.ecoli_k12.sam
+
+# now convert the output to bam and sorted bam for viewing
+# with your viewer of choice, say table
+samtools view -uS aln.x.ecoli_k12.sam > aln.x.ecoli_k12.bam
+samtools sort aln.x.ecoli_k12.bam aln.x.ecoli_k12.bam.sorted
+samtools index aln.x.ecoli_k12.bam.sorted.bam
 
 
 http://www.ncbi.nlm.nih.gov/pubmed/22522955
