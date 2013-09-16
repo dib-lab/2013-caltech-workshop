@@ -4,9 +4,71 @@ Wednesday, September 18th
 Morning: Short reads & mapping
 ------------------------------
 
-Lecture: sequencing basics.
+Lecture: sequencing basics
+***************************
 
-Mapping reads:
+Mapping with bwa
+*****************
+bwa is a tool meant for quickly aligning short reads to a reference. While there
+are more mappers out there than anyone would care to enumerate, bwa is a good
+"reference" version of the most common algorithm and is relatively popular.
+
+Firstly, let's download bwa:
+
+    cd /root
+    curl -L "http://downloads.sourceforge.net/project/bio-bwa/bwa-0.7.5a.tar.bz2?r=\
+    http%3A%2F%2Fsourceforge.net%2Fprojects%2Fbio-bwa%2Ffiles%2F&ts=1379347638&use_\
+    mirror=softlayer-dal" > bwa-0.7.5a.tar.bz2
+
+And then decompress it:
+
+    tar xjf bwa-0.7.5a.tar.bz2
+
+Now, change into the directory with the source code and compile it:
+
+    cd bwa-0.7.5a/
+    make
+    
+Finally, move the compiled executable to a location where the operating system
+can find it:
+
+    cp bwa /usr/local/bin
+
+So what did we actually just do? bwa is offered as an open-source program -- that
+is, the actual code which defines its functionality is freely availabe. However,
+bwa is written in C, which, unlike Python, is not "interpretted." Instead, the
+source code needs to be parsed and converted into machine language which can be
+run on the processor. This allows compiled programs to run much more efficiently 
+than their interpretted counterparts, at the cost of needing to be recompiled for
+different systems. Although pre-compiled executables can be found for many programs,
+Unix programs are often distributed as source. 'make' is a program for tracking
+dependencies amongst files, and is used to manage the compilation of larger
+projects with many files.
+
+Now, we need to grab a few more dependencies. We'll download screed, which is
+a simple python module for parsing fasta files developed by our lab at MSU:
+
+    pip install screed
+
+And then khmer, which is a Python interface to a really fast (and awesome) piece
+of software for counting k-mers (more on that later).
+
+    cd /usr/local/share
+    git clone https://github.com/ged-lab/khmer.git
+    cd khmer
+    git checkout 2013-caltech-cemi
+    make
+
+Now that we've downloaded and built khmer, we'll add it to the system's python
+PATH so that our scripts now where to find it:
+
+    echo 'export PYTHONPATH=/usr/local/share/khmer/python' >> ~/.bashrc
+    source ~/.bashrc
+
+
+
+
+
 http://www.ncbi.nlm.nih.gov/pubmed/22522955
 http://www.ebi.ac.uk/ena/data/view/SRA048664  (see files athyra:~t/cit/)
 
