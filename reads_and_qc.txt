@@ -43,16 +43,58 @@ not sure what preprocessing steps your data has been through, but you have fasta
 instead of fastq, you'd be well-off to make sure of what those steps were.
 
 
+Getting the Data
+````````````````
+Now that you know a litle about the format, let's get some data. The data set
+we'll be using is from everyone's favorite bacterium, ecoli. We'll use the
+command line tool curl to download it to our Amazon machines::
+
+    cd /mnt
+    mkdir ecoli
+    cd ecoli
+    curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR390/SRR390202/SRR390202_1.fastq.gz
+    curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR390/SRR390202/SRR390202_2.fastq.gz
+
+The data came from `this <http://www.ncbi.nlm.nih.gov/pubmed/22522955>`__ study,
+if you're interested.
+
+To take a quick look at the files, use less::
+
+    less SRR390202_1.fastq.gz
+
+Hit 'q' to quit less.
+
+These reads are compressed with gzip to save some space, and are in two files, 
+because they are paired -- the first read in :doc:`SRR390202_1.fastq.gz`
+is paired with the first read in :doc:`SRR390202_2.fastq.gz` and so on. Some programs
+prefer paired reads to be interleaved, that is, in the same file alternating between
+the first and second read pair. Many programs also require the name field in
+the fasta/q to explicitly state which part of a pair a read is with a /1 or /2; for example,
+in an interleaved file, you might have::
+
+    @SRR390202.1 M10_0139:1:2:18915:1321/1
+    ATCAAGAAAGATTTTAACAGCATTGAC
+    +
+    ECCFFFDDHGHFDHJJJJIGIDIJJJJ
+    @SRR390202.1 M10_0139:1:2:18915:1321/2
+    GTTCATAGTGACAAGGTAATATTTGTC
+    +
+    FDFFFFHHGGIJIF?CIGJJGI@FEFH
+    
+Naturally, because this is a standard, almost every program has a different way of
+doing it. So, be sure to double check the pairing format in your data!
+
+
 Getting the Dependencies
 ````````````````````````
 
-Now, we need to grab a few more dependencies. We'll download screed, which is
+Before we can work with our data, we need to grab a few more dependencies. We'll download screed, which is
 a simple python module for parsing fasta files developed by our lab at MSU::
 
     pip install screed
 
 And then khmer, which is a Python interface to a really fast (and awesome) piece
-of software for counting k-mers (more on that later)::
+of software for counting k-mers, also developed by our lab (more on that later)::
 
     cd /usr/local/share
     git clone https://github.com/ged-lab/khmer.git
@@ -66,49 +108,40 @@ PATH so that our scripts now where to find it::
     echo 'export PYTHONPATH=/usr/local/share/khmer/python' >> ~/.bashrc
     source ~/.bashrc
 
+Get Trimmomatic, which is used for adapter removal and quality filtering::
 
-modified instructions for installing trimmomatic and fastx and fastqc; you can swipe a lot of text etc from
+    curl -O http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.30.zip
+    unzip Trimmomatic-0.30.zip
+    cd Trimmomatic-0.30/
+    cp trimmomatic-0.30.jar /usr/local/bin
+    cp -r adapters /usr/local/share/adapters
 
-http://ged.msu.edu/angus/tutorials-2013/short-read-quality-evaluation.html
+And then fastx, and its dependencies, which is another tool for quality filtering::
 
-curl -O http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.30.zip
-unzip Trimmomatic-0.30.zip
-cd Trimmomatic-0.30/
-cp trimmomatic-0.30.jar /usr/local/bin
-cp -r adapters /usr/local/share/adapters
+    cd /root
+    curl -O http://hannonlab.cshl.edu/fastx_toolkit/libgtextutils-0.6.1.tar.bz2
+    tar xjf libgtextutils-0.6.1.tar.bz2
+    cd libgtextutils-0.6.1/
+    ./configure && make && make install
 
-cd /root
-curl -O http://hannonlab.cshl.edu/fastx_toolkit/libgtextutils-0.6.1.tar.bz2
-tar xjf libgtextutils-0.6.1.tar.bz2
-cd libgtextutils-0.6.1/
-./configure && make && make install
+    cd /root
+    curl -O http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit-0.0.13.2.tar.bz2
+    tar xjf fastx_toolkit-0.0.13.2.tar.bz2
+    cd fastx_toolkit-0.0.13.2/
+    ./configure && make && make install
 
-cd /root
-curl -O http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit-0.0.13.2.tar.bz2
-tar xjf fastx_toolkit-0.0.13.2.tar.bz2
-cd fastx_toolkit-0.0.13.2/
-./configure && make && make install
+And finally, FastQC, which is a program for assessing quality, finding contaminants,
+and generally producing nice plots::
 
-cd /usr/local/share
-curl -O http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.10.1\
-.zip
-unzip fastqc_v0.10.1.zip
-chmod +x FastQC/fastqc
-
-Getting the Data
-````````````````
-
-instructions for doing QC prior to mapping and assembly:
-
-cd /mnt
-mkdir ecoli
-cd ecoli
-curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR390/SRR390202/SRR390202_1.fastq.gz
-curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR390/SRR390202/SRR390202_2.fastq.gz
-# data from http://www.ncbi.nlm.nih.gov/pubmed/22522955
+    cd /usr/local/share
+    curl -O http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.10.1.zip
+    unzip fastqc_v0.10.1.zip
+    chmod +x FastQC/fastqc
 
 Assessing your Data with FastQC
 ```````````````````````````````
+
+
 
 Trimming Your Data
 ``````````````````

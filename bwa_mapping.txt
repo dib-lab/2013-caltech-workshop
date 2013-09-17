@@ -90,7 +90,7 @@ a utility called samtools to produce a sorted BAM file as well::
     samtools sort aln.x.ecoli_k12.bam aln.x.ecoli_k12.bam.sorted
     samtools index aln.x.ecoli_k12.bam.sorted.bam
 
-And there you have it! For additional resources, check out:
+For additional resources on these tools, check out:
 
 * the bwa `manual <http://bio-bwa.sourceforge.net/bwa.shtml>`__
 * info on `samtools <http://samtools.sourceforge.net/>`__
@@ -98,3 +98,14 @@ And there you have it! For additional resources, check out:
 
 Visualizing your Data with Tablet
 `````````````````````````````````
+
+Although you can do many things with your alignments, one useful thing is to simply
+view them through a graphical interface. To demonstrate this, we'll use a program
+called Tablet, which can be downloaded `here <http://bioinf.scri.ac.uk/tablet/download.shtml>`__.
+
+Tablet claims to run on Windows, Linux, and OSX, though I have only tested it out
+on Linux. Because this is a GUI-driven program, we'll be running it on our
+local machines instead of our EC2 instances. So, go ahead and grab the approriate
+version for your system, and install it.
+
+Once you have it installed, open it up. 
