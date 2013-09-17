@@ -48,11 +48,11 @@ can find it::
     cp bwa /usr/local/bin
 
 So what did we actually just do? bwa is offered as an open-source program -- that
-is, the actual code which defines its functionality is freely availabe. However,
-bwa is written in C, which, unlike Python, is not "interpretted." Instead, the
+is, the actual code which defines its functionality is freely available. However,
+bwa is written in C, which, unlike Python, is not "interpreted." Instead, the
 source code needs to be parsed and converted into machine language which can be
 run on the processor. This allows compiled programs to run much more efficiently 
-than their interpretted counterparts, at the cost of needing to be recompiled for
+than their interpreted counterparts, at the cost of needing to be recompiled for
 different systems. Although pre-compiled executables can be found for many programs,
 Unix programs are often distributed as source. 'make' is a program for tracking
 dependencies amongst files, and is used to manage the compilation of larger
@@ -106,7 +106,7 @@ Now that we've got the reads, let's split them. These reads are paired -- that i
 each has a "left" and "right" component which came from the same molecule of DNA,
 and fall within some range of distances from each other. This allows for assemblers
 and mappers to reap some of the benefits of longer reads, without actually requiring
-the sequencing hardware to produce longer reads. We'll go into furhter detail
+the sequencing hardware to produce longer reads. We'll go into further detail
 during the assembly portion.
 
 These paired reads happen to be "interleaved," meaning that the left and right
@@ -122,7 +122,7 @@ The head command outputs the first n lines of a file, by default 4::
     head -n 100000 ecoli_ref-5m.fastq.gz.1 > left.fa
     head -n 100000 ecoli_ref-5m.fastq.gz.2 > right.fa
 
-We've got our reads and a referencce, so we're ready to get started. First, we
+We've got our reads and a reference, so we're ready to get started. First, we
 build an index of the reference genome using bwa::
 
     bwa index -a bwtsw ecoli_k12.fa 
