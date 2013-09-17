@@ -10,7 +10,8 @@
 Day              Schedule
 ===============  =============================================================
 Tuesday 9/17     * 1:15pm: Igor Antoschechkin on local sequencing core
-		 * Afternoon lab: :doc:`tuesday`
+		 * Afternoon lab 1: :doc:`amazon/index`
+		 * Afternoon lab 2: :doc:`tuesday`
 		 * Afternoon lecture: retrospective on afternoon lab
 Wednesday 9/18   * 9am: lecture, short read sequencing
 	  	 * morning lab: reads, quality control, and mapping
