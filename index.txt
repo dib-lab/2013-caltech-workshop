@@ -6,13 +6,25 @@
 2013 CEMI Workshop at Caltech
 =============================
 
-.. toctree::
-   :maxdepth: 2
-
-   tuesday
-..   wednesday
-..   thursday
-..   friday
+===============  =============================================================
+Day              Schedule
+===============  =============================================================
+Tuesday 9/17     * 1:15pm: Igor Antoschechkin on local sequencing core
+		 * Afternoon lab: :doc:`tuesday`
+		 * Afternoon lecture: retrospective on afternoon lab
+Wednesday 9/18   * 9am: lecture, short read sequencing
+	  	 * morning lab: reads, quality control, and mapping
+		 * 1:15pm: assembly lecture
+		 * afternoon lab: assembly exercise; assembly
+Thursday 9/19	 * 9am: lecture: how computers work
+	 	 * morning lab: Prokka genome annotation; BLAST server setup
+		 * afternoon lecture: pipelines
+	 	 * afternoon lab: pipelines and automation; version ctl; overflow.
+Friday 9/20	 * **Arms building first floor (Buwalda Room 151A)**
+       		 * 9am: lecture: metagenome assembly, binding site finding, etc
+       		 * morning: open lab time to work through pipelines
+		 * **ends** 2pm
+===============  =============================================================
 
 Indices and tables
 ==================

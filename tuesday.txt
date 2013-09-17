@@ -1,8 +1,5 @@
-Tuesday, September 17th
-=======================
-
-Afternoon: Basic command line and BLAST
----------------------------------------
+Basic EC2, command line, and BLAST
+==================================
 
 .. Lecture: welcome & introduction; goals.
 
