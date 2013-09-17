@@ -23,7 +23,7 @@ Thursday 9/19	 * 9am: lecture: how computers work
 Friday 9/20	 * **Arms building first floor (Buwalda Room 151A)**
        		 * 9am: lecture: metagenome assembly, binding site finding, etc
        		 * morning: open lab time to work through pipelines
-		 * **ends** 2pm
+		 * **ends** 1pm; lunch with Titus, Chris, Yoshiki.
 ===============  =============================================================
 
 Indices and tables
