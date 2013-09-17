@@ -12,11 +12,24 @@ Getting started with Amazon EC2
 
    installing-dropbox
 
+A final checklist:
+
+- EC2 instance is running;
+- used AMI ami-c17ec8a8;
+- NOT micro instance (m1.large, or bigger);
+- SSH, HTTP, HTTPS are enabled on the security group;
+
 IPython Notebook access
 -----------------------
 
 You can access IPython Notebook on your computer by going to
 https:// + YOUR MACHINE NAME, and then entering 'beacon' as the password.
+
+Amazon Web Services reference material
+--------------------------------------
+
+`Instance types <http://aws.amazon.com/ec2/instance-types/>`__
+`Instance costs <http://aws.amazon.com/ec2/pricing/>`__
 
 .. Survey for course assessment
 .. ----------------------------
