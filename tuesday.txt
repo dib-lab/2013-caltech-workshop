@@ -61,6 +61,7 @@ Look at the output file::
 
 Let's convert 'em to a CSV file::
 
+   pip install screed
    python /usr/local/share/ngs-scripts/blast/blast-to-csv-with-names.py ecoli0104.faa NC_000913.faa 0104.x.NC > 0104.x.NC.csv
 
 This creates a file '0104.x.NC.csv', which you an open in Excel.
