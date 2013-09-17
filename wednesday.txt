@@ -143,9 +143,10 @@ a utility called samtools to produce a sorted BAM file as well::
     samtools index aln.x.ecoli_k12.bam.sorted.bam
 
 And there you have it! For additional resources, check out:
-* `the bwa manual <http://bio-bwa.sourceforge.net/bwa.shtml>`__
-* `samtools <http://samtools.sourceforge.net/>`__
-* `the SAM format <http://samtools.sourceforge.net/SAM1.pdf>`__
+
+* the bwa `manual <http://bio-bwa.sourceforge.net/bwa.shtml>`__
+* info on `samtools <http://samtools.sourceforge.net/>`__
+* the SAM `format spec <http://samtools.sourceforge.net/SAM1.pdf>`__
 
 @cswelcher TODO:
 
