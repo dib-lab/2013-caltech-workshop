@@ -10,9 +10,9 @@
    :maxdepth: 2
 
    tuesday
-   wednesday
-   thursday
-   friday
+..   wednesday
+..   thursday
+..   friday
 
 Indices and tables
 ==================
