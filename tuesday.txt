@@ -1,25 +1,16 @@
 Basic EC2, command line, and BLAST
 ==================================
 
-.. Lecture: welcome & introduction; goals.
-
-.. Q to answer:
-..  - why are we downloading all this stuff? can't you install it for us?
-
-.. cooking analogy
-.. (tv dinner)
-.. => hamburger helper
-
-Log into your AWS account, spin up a machine.
-
-Log in to the machine.
-
-Install dropbox.
+Log into your AWS account, spin up a machine, log into the machine
+with SSH, and install Dropbox (see :doc:`amazon/index`).
 
 Install BLAST and some other software
 -------------------------------------
 
-Download and install BLAST::
+You should be starting at the prompt ending in '#', after logging in via
+SSH.
+
+First, Download and install BLAST::
 
    cd /root
    
@@ -103,3 +94,16 @@ Explore the NCBI bacterial genome site here: http://ftp.ncbi.nlm.nih.gov/genomes
 - '.faa' files are protein data sets;
 - '.fna' files are genomic DNA;
 - the rest are annotation files of various kinds.
+
+BONUS: plotting the BLAST e-value distribution from the CSV
+-----------------------------------------------------------
+
+IPython Notebook is running on these machines, and we can use that to
+do data analysis on the files.  For example, let's grab a notebook to
+plot blast e-value distributions::
+
+   cd /usr/local/notebooks
+   curl -O http://athyra.idyll.org/~t/plot-blast-evalues.ipynb
+
+Now, go to 'https://' + your machine name, enter password 'beacon', and
+open the 'plot-blast-evalues' notebook.
