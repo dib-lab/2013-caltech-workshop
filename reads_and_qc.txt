@@ -21,12 +21,26 @@ assembled. A faux example of the format is::
     DH<F4CFDFH@FHIBBE
     
 The first line is the name of the sequence; there is no set format for this, though
-most of the big centers like the NCBI have one they follow. This is followed by
-a '+' and then the sequence itself, which can be either nucleotide or protein.
-Then we have another '+', followed by the quality line.
+most of the big centers like the NCBI have set standards. This is followed by
+a '+', a linebreak, and then the sequence itself, which can be either nucleotide or protein.
+Then we have another linebreak, a '+', and a linebreak, followed by the quality line.
 
-The quality line is perhaps the confusing part of the format. This line follows
-what is known as the phred format. Each character is 
+The quality line is the part of the format which is not immediately obvious. This line follows
+what is known as the phred format. Each ascii character corresponds to a base,
+and its integer mapping is used in the equation :math:`P = 10^{-Q / 10}`,
+where :math:`Q` is the phred score and :math:`P` is the probability that the base
+is incorrectly called.
+
+The counterpart to fastq is fasta, which is essentially fastq without the quality
+score and a minor formatting change::
+
+    >read1
+    ATCGTAGGTAGGATATA
+    
+fasta is usually output by assembly programs, and can be used if data has already
+been quality controlled and needs to be a more manageable size. However, if you're
+not sure what preprocessing steps your data has been through, but you have fasta
+instead of fastq, you'd be well-off to make sure of what those steps were.
 
 
 Getting the Dependencies
