@@ -14,7 +14,8 @@ Tuesday 9/17     * 1:15pm: Igor Antoschechkin on local sequencing core
 		 * Afternoon lab 2: :doc:`tuesday`
 		 * Afternoon lecture: retrospective on afternoon lab
 Wednesday 9/18   * 9am: lecture, short read sequencing
-	  	 * morning lab: :doc:`reads_and_qc`, and :doc:`bwa_mapping`
+	  	 * morning lab: :doc:`reads_and_qc`
+	  	 * morning lab 2: :doc:`bwa_mapping`
 		 * 1:15pm: assembly lecture
 		 * afternoon lab: assembly exercise; assembly
 Thursday 9/19	 * 9am: lecture: how computers work
