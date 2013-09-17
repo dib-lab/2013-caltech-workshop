@@ -1,0 +1,115 @@
+Understanding Read Formats and Quality Controlling Data
+=======================================================
+
+The fastq Format
+````````````````
+After spending weeks, nay, months of time on designing your study and planning your
+bioinformatics goals (right?), you finally get the email from you sequencing
+center: they have your data! You get a link to an ftp server and some login information,
+and are presented with a list of files. But what are these formats?
+
+Most commonly, you'll get your data in fastq format. fastq is a really simple
+way of representing sequence in plain text which is understood by pretty much
+every piece of bioinformatics software. A fastq file can contain anywhere from
+one to billions of sequences, and is usually used for reads before they have been
+assembled. A faux example of the format is::
+
+    @read1
+    +
+    ATCGTAGCTAGCTAGCT
+    +
+    DH<F4CFDFH@FHIBBE
+    
+The first line is the name of the sequence; there is no set format for this, though
+most of the big centers like the NCBI have one they follow. This is followed by
+a '+' and then the sequence itself, which can be either nucleotide or protein.
+Then we have another '+', followed by the quality line.
+
+The quality line is perhaps the confusing part of the format. This line follows
+what is known as the phred format. Each character is 
+
+
+Getting the Dependencies
+````````````````````````
+
+Now, we need to grab a few more dependencies. We'll download screed, which is
+a simple python module for parsing fasta files developed by our lab at MSU::
+
+    pip install screed
+
+And then khmer, which is a Python interface to a really fast (and awesome) piece
+of software for counting k-mers (more on that later)::
+
+    cd /usr/local/share
+    git clone https://github.com/ged-lab/khmer.git
+    cd khmer
+    git checkout 2013-caltech-cemi
+    make
+
+Now that we've downloaded and built khmer, we'll add it to the system's python
+PATH so that our scripts now where to find it::
+
+    echo 'export PYTHONPATH=/usr/local/share/khmer/python' >> ~/.bashrc
+    source ~/.bashrc
+
+
+modified instructions for installing trimmomatic and fastx and fastqc; you can swipe a lot of text etc from
+
+http://ged.msu.edu/angus/tutorials-2013/short-read-quality-evaluation.html
+
+curl -O http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.30.zip
+unzip Trimmomatic-0.30.zip
+cd Trimmomatic-0.30/
+cp trimmomatic-0.30.jar /usr/local/bin
+cp -r adapters /usr/local/share/adapters
+
+cd /root
+curl -O http://hannonlab.cshl.edu/fastx_toolkit/libgtextutils-0.6.1.tar.bz2
+tar xjf libgtextutils-0.6.1.tar.bz2
+cd libgtextutils-0.6.1/
+./configure && make && make install
+
+cd /root
+curl -O http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit-0.0.13.2.tar.bz2
+tar xjf fastx_toolkit-0.0.13.2.tar.bz2
+cd fastx_toolkit-0.0.13.2/
+./configure && make && make install
+
+cd /usr/local/share
+curl -O http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.10.1\
+.zip
+unzip fastqc_v0.10.1.zip
+chmod +x FastQC/fastqc
+
+Getting the Data
+````````````````
+
+instructions for doing QC prior to mapping and assembly:
+
+cd /mnt
+mkdir ecoli
+cd ecoli
+curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR390/SRR390202/SRR390202_1.fastq.gz
+curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR390/SRR390202/SRR390202_2.fastq.gz
+# data from http://www.ncbi.nlm.nih.gov/pubmed/22522955
+
+Assessing your Data with FastQC
+```````````````````````````````
+
+Trimming Your Data
+``````````````````
+
+mkdir trim
+cd trim
+
+java -jar /usr/local/bin/trimmomatic-0.30.jar PE ../SRR390202_1.fastq.gz ../SRR390202_2.fastq.gz s1_pe s1_se s2_pe s2_se ILLUMINACLIP:/usr/local/share/adapters/TruSeq3-PE.fa:2:30:10
+/usr/local/share/khmer/scripts/interleave-reads.py s1_pe s2_pe > combined.fq
+fastq_quality_filter -Q33 -q 30 -p 50 -i combined.fq > combined-trim.fq
+fastq_quality_filter -Q33 -q 30 -p 50 -i s1_pe > s1_se.filt
+
+/usr/local/share/khmer/scripts/extract-paired-reads.py combined-trim.fq
+cat combined-trim.fq.se s1_se.filt | gzip -9c > ../SRR390202.se.qc.fq.gz
+
+gzip -9c combined-trim.fq.pe > ../SRR390202.pe.qc.fq.gz
+cd ../
+rm -fr trim

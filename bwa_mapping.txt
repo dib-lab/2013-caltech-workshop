@@ -1,0 +1,100 @@
+Mapping with bwa
+================
+
+One of the most common operations when dealing with NGS data is mapping sequences
+to other sequences, and most commonly, mapping reads to a reference. Because
+short read alignment is so common, there is a deluge of programs available for doing
+it, and it is well-understood problem. Most of the efficient programs work by first
+building an *index* of the sequence that will be mapped to, which allows for
+extremely fast lookups, and then running a separate module which uses that index
+to align short sequences against the reference. Alignment is used for visualization,
+coverage estimation, SNP calling, expression analysis, and a slew of other problems.
+For a high-level overview, try `this NCBI review <http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2836519/>`__.
+
+Getting the Dependencies
+````````````````````````
+
+bwa is one of the many available read mappers. bwa is a good "reference" version 
+of a common alignment algorithm based on the Burrows-Wheeler transform; those
+of you looking to dive into a relatively thick paper on it can read about it
+`here <http://bioinformatics.oxfordjournals.org/content/25/14/1754.short>`__.
+
+Firstly, let's download bwa::
+
+    cd /root
+    curl -L "http://downloads.sourceforge.net/project/bio-bwa/bwa-0.7.5a.tar.bz2?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fbio-bwa%2Ffiles%2F&ts=1379347638&use_mirror=softlayer-dal" > bwa-0.7.5a.tar.bz2
+
+And then decompress it::
+
+    tar xjf bwa-0.7.5a.tar.bz2
+
+Now, change into the directory with the source code and compile it::
+
+    cd bwa-0.7.5a/
+    make
+    
+Finally, move the compiled executable to a location where the operating system
+can find it::
+
+    cp bwa /usr/local/bin
+
+So what did we actually just do? bwa is offered as an open-source program -- that
+is, the actual code which defines its functionality is freely available. However,
+bwa is written in C, which, unlike Python, is not "interpreted." Instead, the
+source code needs to be parsed and converted into machine language which can be
+run on the processor. This allows compiled programs to run much more efficiently 
+than their interpreted counterparts, at the cost of needing to be recompiled for
+different systems. Although pre-compiled executables can be found for many programs,
+Unix programs are often distributed as source. 'make' is a program for tracking
+dependencies amongst files, and is used to manage the compilation of larger
+projects with many files.
+
+'make' is also very useful for setting up pipelines, as it is not limited to
+source files -- it can be used for any situation where one program needs to output
+of another to run. You can read about it `here <http://www.gnu.org/software/make/>`__ if you're interested, though
+it's outside the scope of this tutorial.
+
+Getting the Data
+````````````````
+
+We'll be using the data we downloaded during the reads and quality control session;
+if you missed that, go run through it in :doc:`reads_and_qc`
+
+Mapping the Reads
+`````````````````
+
+To speed up the demonstration, we will just map a subset of the reads rather than
+the entire file, which is somewhat large (though small compared to many datasets).
+The head command outputs the first n lines of a file, by default 4::
+
+    head -n 100000 ecoli_ref-5m.fastq.gz.1 > left.fa
+    head -n 100000 ecoli_ref-5m.fastq.gz.2 > right.fa
+
+We've got our reads and a reference, so we're ready to get started. First, we
+build an index of the reference genome using bwa::
+
+    bwa index -a bwtsw ecoli_k12.fa 
+
+The -a flag tells bwa which indexing algorithm to use. The program will automatically
+output some files with set extensions, which the main alignment program knows the
+format of. Thus, we run the alignment like so::
+
+    bwa mem ecoli_k12.fa left.fa right.fa > aln.x.ecoli_k12.sam
+
+which aligns the left and right reads against the reference, and outputs them
+to the given SAM file. SAM is a common format for alignments which is understood
+by many programs, along with BAM. It's often useful to have both, so we'll use
+a utility called samtools to produce a sorted BAM file as well::
+
+    samtools view -uS aln.x.ecoli_k12.sam > aln.x.ecoli_k12.bam
+    samtools sort aln.x.ecoli_k12.bam aln.x.ecoli_k12.bam.sorted
+    samtools index aln.x.ecoli_k12.bam.sorted.bam
+
+And there you have it! For additional resources, check out:
+
+* the bwa `manual <http://bio-bwa.sourceforge.net/bwa.shtml>`__
+* info on `samtools <http://samtools.sourceforge.net/>`__
+* the SAM `format spec <http://samtools.sourceforge.net/SAM1.pdf>`__
+
+Visualizing your Data with Tablet
+`````````````````````````````````
