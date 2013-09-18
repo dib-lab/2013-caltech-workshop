@@ -149,7 +149,7 @@ Assessing your Data with FastQC
 ```````````````````````````````
 
 First we're going to separate out a subset of the reads for demonstrative
-purposes; otherwise, things take way too long!::
+purposes; otherwise, things take way too long::
 
     gunzip -c SRR390202_1.fastq.gz | head -n 400000 > SRR390202_1.head.fastq
     gunzip -c SRR390202_2.fastq.gz | head -n 400000 > SRR390202_2.head.fastq
@@ -214,7 +214,7 @@ Reassess Data Quality
 `````````````````````
 
 Once the reads have been quality-controlled, we should check to make sure that our
-measures were actually helpful!::
+measures were actually helpful::
 
     mkdir /var/www/ecoli_qc_fastqc
     /usr/local/share/FastQC/fastqc SRR390202.head.pe.qc.fq.gz SRR390202.head.se.qc.fq.gz -o /var/www/ecoli_qc_fastqc
