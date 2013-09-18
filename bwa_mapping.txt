@@ -58,7 +58,19 @@ Getting the Data
 ````````````````
 
 We'll be using the data we downloaded during the reads and quality control session;
-if you missed that, go run through it in :doc:`reads_and_qc`
+if you missed that, you'll eventually want to run through it in :doc:`reads_and_qc`,
+but for now, you can just grab the quality-controlled data with::
+
+    cd /mnt
+    mkdir -p ecoli
+    curl -O https://s3.amazonaws.com/public.ged.msu.edu/SRR390202.pe.qc.fq.gz
+    curl -O https://s3.amazonaws.com/public.ged.msu.edu/SRR390202.se.qc.fq.gz
+    
+You'll also need a reference genome, which can be acquired with::
+
+     cd /mnt
+     mkdir -p ecoli
+     curl -O http://ftp.ncbi.nlm.nih.gov/genomes/Bacteria/Escherichia_coli_O104_H4_2011C_3493_uid176127/NC_018658.fna
 
 Mapping the Reads
 `````````````````
