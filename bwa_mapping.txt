@@ -79,8 +79,8 @@ To speed up the demonstration, we will just map a subset of the reads rather tha
 the entire file, which is somewhat large (though small compared to many datasets).
 The head command outputs the first n lines of a file, by default 4::
 
-    head -n 400000 SRR390202.pe.qc.fq.gz > ecoli_pe.fa
-    head -n 400000 SRR390202.se.qc.fq.gz > ecoli_se.fa
+    head -n 400000 SRR390202.pe.qc.fq.gz > ecoli_pe.fq
+    head -n 400000 SRR390202.se.qc.fq.gz > ecoli_se.fq
 
 We've got our reads and a reference, so we're ready to get started. First, we
 build an index of the reference genome using bwa::
@@ -91,7 +91,7 @@ The -a flag tells bwa which indexing algorithm to use. The program will automati
 output some files with set extensions, which the main alignment program knows the
 format of. Thus, we run the alignment like so::
 
-    bwa mem -p NC_018658.fna ecoli_pe.fa > aln.x.ecoli_NC_018658.sam
+    bwa mem -p NC_018658.fna ecoli_pe.fq > aln.x.ecoli_NC_018658.sam
 
 which aligns the left and right reads against the reference, and outputs them
 to the given SAM file. SAM is a common format for alignments which is understood
