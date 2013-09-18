@@ -78,8 +78,8 @@ The head command outputs the first n lines of a file, by default 4::
 
     mkdir -p /mnt/ecoli
     cd /mnt/ecoli
-    head -n 400000 ../SRR390202.pe.qc.fq.gz > ecoli_pe.fq
-    head -n 400000 ../SRR390202.se.qc.fq.gz > ecoli_se.fq
+    gunzip -c ../SRR390202.pe.qc.fq.gz | head -400000 > ecoli_pe.fq
+    gunzip -c ../SRR390202.se.qc.fq.gz | head -400000 > ecoli_se.fq
 
 We've got our reads and a reference, so we're ready to get started. First, we
 build an index of the reference genome using bwa::
@@ -99,9 +99,19 @@ by many programs, along with BAM. It's often useful to have both, so we'll use
 a utility called samtools to produce a sorted BAM file as well.  First,
 install samtools::
 
-    apt-get install -y samtools
+    cd /mnt
+    curl -O -L http://sourceforge.net/projects/samtools/files/samtools/0.1.18/samtools-0.1.18.tar.bz2
+    tar xvfj samtools-0.1.18.tar.bz2
+    cd samtools-0.1.18
+    make
+    cp samtools /usr/local/bin
+    cd misc/
+    cp *.pl maq2sam-long maq2sam-short md5fa md5sum-lite wgsim /usr/local/bin/
+    cd ..
+    cd bcftools
+    cp *.pl bcftools /usr/local/bin/
 
-Then, run samtools to do the conversion::
+ Then, run samtools to do the conversion::
 
     samtools view -uS aln.x.ecoli_NC_018658.sam > aln.x.ecoli_NC_018658.bam
     samtools sort aln.x.ecoli_NC_018658.bam aln.x.ecoli_NC_018658.bam.sorted
