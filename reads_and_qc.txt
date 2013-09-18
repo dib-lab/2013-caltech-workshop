@@ -22,11 +22,11 @@ assembled. A faux example of the format is::
     
 The first line is the name of the sequence; there is no set format for this, though
 most of the big centers like the NCBI have set standards. This is followed by
-a '+', a linebreak, and then the sequence itself, which can be either nucleotide or protein.
-Then we have another linebreak, a '+', and a linebreak, followed by the quality line.
+a '+', a line break, and then the sequence itself, which can be either nucleotide or protein.
+Then we have another line break, a '+', and a line break, followed by the quality line.
 
 The quality line is the part of the format which is not immediately obvious. This line follows
-what is known as the phred format. Each ascii character corresponds to a base,
+what is known as the phred format. Each ASCII character corresponds to a base,
 and its integer mapping is used in the equation :math:`P = 10^{-Q / 10}`,
 where :math:`Q` is the phred score and :math:`P` is the probability that the base
 is incorrectly called.
@@ -45,7 +45,7 @@ instead of fastq, you'd be well-off to make sure of what those steps were.
 
 Getting the Data
 ````````````````
-Now that you know a litle about the format, let's get some data. The data set
+Now that you know a little about the format, let's get some data. The data set
 we'll be using is from everyone's favorite bacterium, ecoli. We'll use the
 command line tool curl to download it to our Amazon machines::
 
@@ -165,14 +165,14 @@ and produces handy charts and statistics::
 In the previous step, we actually also installed a very lightweight http server.
 This allows you to host things publicly on your instance and view it through a 
 browser, which in some cases avoids having to download the data to your computer. 
-In the last command, we put our output in the webserver's folder, so let's go
+In the last command, we put our output in the web server's folder, so let's go
 ahead and access it. In a new browser tab, go to::
 
     http://ec2-???????????.compute-1.amazonaws.com/ecoli_fastqc/
 
 replacing the question marks with your EC2 URL. You should be presented with
 something like `this <http://ec2-50-16-8-137.compute-1.amazonaws.com/ecoli_fastqc/>`__.
-There is a folder for eachh of your sequence files, each of which contains a file
+There is a folder for each of your sequence files, each of which contains a file
 called :doc:`fastqc_report.html`. Clicking on that file will render the report
 in your browser.
 
@@ -190,7 +190,7 @@ here::
     java -jar /usr/local/bin/trimmomatic-0.30.jar PE ../SRR390202_1.head.fastq ../SRR390202_2.head.fastq s1_pe s1_se s2_pe s2_se ILLUMINACLIP:/usr/local/share/adapters/TruSeq3-PE.fa:2:30:10
     
 fastx is an alternative which performs many of the same functions as Trimmomatic.
-We'll use it for quality fiiltering; the following flags direct its fastq_quality_filter
+We'll use it for quality filtering; the following flags direct its fastq_quality_filter
 module to keep reads if 50% of the bases have a quality score over 30::
     
     /usr/local/share/khmer/scripts/interleave-reads.py s1_pe s2_pe > combined.fq
