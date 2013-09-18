@@ -131,11 +131,11 @@ Once you have it installed, open it up. You'll want to load your mapping file
 and reference genome:
 
 .. image:: images/tablet_open.png
-    :width: 50%
+    :width: 75%
 
 You'll then get some loading bars, and potentially an error about the indexing file
 which can be ignored. You need to select a contig on the left to view; ecoli has
 a very good reference, and is only one contig:
 
 .. image:: images/tablet_view.png
-    :width: 50%
+    :width: 75%
