@@ -113,6 +113,7 @@ install samtools::
 
 Then, run samtools to do the conversion::
 
+    cd /mnt/ecoli
     samtools view -uS aln.x.ecoli_NC_018658.sam > aln.x.ecoli_NC_018658.bam
     samtools sort aln.x.ecoli_NC_018658.bam aln.x.ecoli_NC_018658.bam.sorted
     samtools index aln.x.ecoli_NC_018658.bam.sorted.bam
