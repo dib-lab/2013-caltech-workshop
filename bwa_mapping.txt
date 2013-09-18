@@ -124,7 +124,7 @@ called Tablet, which can be downloaded `here <http://bioinf.scri.ac.uk/tablet/do
 
 Tablet claims to run on Windows, Linux, and OSX, though I have only tested it out
 on Linux. Because this is a GUI-driven program, we'll be running it on our
-local machines instead of our EC2 instances. So, go ahead and grab the approriate
+local machines instead of our EC2 instances. So, go ahead and grab the appropriate
 version for your system, and install it.
 
 Once you have it installed, open it up. You'll want to load your mapping file
@@ -139,3 +139,6 @@ a very good reference, and is only one contig:
 
 .. image:: images/tablet_view.png
     :width: 75%
+    
+You can move left and right along the contig, as well as zoom. Tablet can view
+other information like gene structure, but we won't get into that.
