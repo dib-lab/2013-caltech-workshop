@@ -97,7 +97,12 @@ format of. Thus, we run the alignment like so::
 which aligns the left and right reads against the reference, and outputs them
 to the given SAM file. SAM is a common format for alignments which is understood
 by many programs, along with BAM. It's often useful to have both, so we'll use
-a utility called samtools to produce a sorted BAM file as well::
+a utility called samtools to produce a sorted BAM file as well.  First,
+install samtools::
+
+    apt-get install -y samtools
+
+Then, run samtools to do the conversion::
 
     samtools view -uS aln.x.ecoli_NC_018658.sam > aln.x.ecoli_NC_018658.bam
     samtools sort aln.x.ecoli_NC_018658.bam aln.x.ecoli_NC_018658.bam.sorted
