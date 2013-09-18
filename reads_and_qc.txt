@@ -151,6 +151,7 @@ Assessing your Data with FastQC
 First we're going to separate out a subset of the reads for demonstrative
 purposes; otherwise, things take way too long::
 
+    cd /mnt/ecoli
     gunzip -c SRR390202_1.fastq.gz | head -n 400000 > SRR390202_1.head.fastq
     gunzip -c SRR390202_2.fastq.gz | head -n 400000 > SRR390202_2.head.fastq
 
