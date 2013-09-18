@@ -2,6 +2,8 @@
 Basic (single-genome) assembly
 ==============================
 
+(You'll need to have screed and khmer installed; see :doc:`reads_and_qc`.)
+
 .. @screen
 
 We're going to work through an assembly pipeline that uses a Brown Lab
