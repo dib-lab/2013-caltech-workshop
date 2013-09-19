@@ -1,0 +1,101 @@
+cd /root
+curl -L "http://downloads.sourceforge.net/project/bio-bwa/bwa-0.7.5a.tar.bz2?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fbio-bwa%2Ffiles%2F&ts=1379347638&use_mirror=softlayer-dal" > bwa-0.7.5a.tar.bz2
+tar xjf bwa-0.7.5a.tar.bz2
+
+
+cd bwa-0.7.5a/
+make
+cp bwa /usr/local/bin
+
+
+pip install screed
+
+cd /usr/local/share
+git clone https://github.com/ged-lab/khmer.git
+cd khmer
+git checkout 2013-caltech-cemi
+make
+
+echo 'export PYTHONPATH=/usr/local/share/khmer/python' >> ~/.bashrc
+source ~/.bashrc
+
+---
+
+curl -O http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.30.zip
+unzip Trimmomatic-0.30.zip 
+cd Trimmomatic-0.30/
+cp trimmomatic-0.30.jar /usr/local/bin
+cp -r adapters /usr/local/share/adapters
+
+cd /root
+curl -O http://hannonlab.cshl.edu/fastx_toolkit/libgtextutils-0.6.1.tar.bz2
+tar xjf libgtextutils-0.6.1.tar.bz2
+cd libgtextutils-0.6.1/
+./configure && make && make install
+
+cd /root
+curl -O http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit-0.0.13.2.tar.bz2
+tar xjf fastx_toolkit-0.0.13.2.tar.bz2
+cd fastx_toolkit-0.0.13.2/
+./configure && make && make install
+
+cd /usr/local/share
+curl -O http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.10.1.zip
+unzip fastqc_v0.10.1.zip
+chmod +x FastQC/fastqc
+
+---
+
+note adapters
+
+
+---
+
+spades: http://bioinf.spbau.ru/spades
+
+apt-get -y install cmake
+
+wget http://spades.bioinf.spbau.ru/release2.5.1/SPAdes-2.5.1.tar.gz
+tar -xzf SPAdes-2.5.1.tar.gz
+cd SPAdes-2.5.1
+PREFIX=/usr/local ./spades_compile.sh
+
+---
+
+java -jar /usr/local/bin/trimmomatic-0.30.jar PE ../SRR390202_1.fastq.gz ../SRR390202_2.fastq.gz s1_pe s1_se s2_pe s2_se ILLUMINACLIP:/usr/local/share/adapters/TruSeq3-PE.fa:2:30:10
+/usr/local/share/khmer/scripts/interleave-reads.py s1_pe s2_pe > combined.fq
+fastq_quality_filter -Q33 -q 30 -p 50 -i combined.fq > combined-trim.fq
+fastq_quality_filter -Q33 -q 30 -p 50 -i s1_pe > s1_se.filt
+
+/usr/local/share/khmer/scripts/extract-paired-reads.py combined-trim.fq
+cat combined-trim.fq.se s1_se.filt | gzip -9c > ../SRR390202.se.qc.fq.gz
+
+gzip -9c combined-trim.fq.pe > ../SRR390202.pe.qc.fq.gz
+
+-------
+
+
+# get the reads
+curl -O https://s3.amazonaws.com/public.ged.msu.edu/ecoli_ref-5m.fastq.gz
+
+# split the paired reads into their left and right components 
+python /usr/local/share/khmer/scripts/split-paired-reads.py ecoli_ref-5m.fastq.gz 
+
+# get a reference genome
+curl http://www.genome.wisc.edu/pub/sequence/U00096.2.fas > ecoli_k12.fa
+
+# build the FM-index of the reference for the alignment algorithm
+bwa index -a bwtsw ecoli_k12.fa 
+
+# just grab a subset of the reads for demonstration purposes
+head -n 50000 ecoli_ref-5m.fastq.gz.1 > left.fa
+head -n 50000 ecoli_ref-5m.fastq.gz.2 > right.fa
+
+# perform the alignment using bwa mem and output to same
+bwa mem -t 4 ecoli_k12.fa left.fa right.fa > aln.x.ecoli_k12.sam
+
+# now convert the output to bam and sorted bam for viewing
+# with your viewer of choice, say table
+samtools view -uS aln.x.ecoli_k12.sam > aln.x.ecoli_k12.bam
+samtools sort aln.x.ecoli_k12.bam aln.x.ecoli_k12.bam.sorted
+samtools index aln.x.ecoli_k12.bam.sorted.bam

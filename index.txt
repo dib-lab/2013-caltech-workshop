@@ -20,9 +20,9 @@ Wednesday 9/18   * 9am: lecture, `Short read mapping <_static/cemi-lecture-mappi
 	  	 * morning lab 2: :doc:`bwa_mapping`
 		 * 1:15pm: assembly exercise
 		 * 2pm: lecture, `Assembly <_static/cemi-assembly.pptx.pdf>`__
-		 * lab: :doc:`assembly-lab` and :doc:`blastkit`
-Thursday 9/19	 * 9am: lecture: metagenome assembly
-	 	 * morning lab: Prokka genome annotation; BLAST server setup x 2
+Thursday 9/19	 * lab: :doc:`assembly-lab` and :doc:`blastkit`
+	 	 * 9am: lecture: metagenome assembly
+	 	 * morning lab: :doc:`prokka-annotation`
 		 * afternoon lecture: pipelines; how computers work
 	 	 * afternoon lab: pipelines and automation; version ctl; overflow.
 Friday 9/20	 * **Arms building first floor (Buwalda Room 151A)**
