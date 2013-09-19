@@ -30,4 +30,5 @@ Some exercises to try
    you can download a zip file of the results here:
    http://athyra.idyll.org/~t/ecoli0104-prokka.zip)
 
+4. Assemble the provided ecoli reads *without* digital normalization.
 .. 4. BLAST overlap of assemblies.
