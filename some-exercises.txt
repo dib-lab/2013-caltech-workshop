@@ -13,7 +13,7 @@ Some exercises to try
    (see these tutorials: :doc:`reads_and_qc` and `assembly-lab`)
 
 2. Browse the `NCBI Bacterial genomes site
-   <http://ftp.ncbi.nlm.nih.gov/genomes/Bacteria>`__, download a proteome
+   <http://ftp.ncbi.nlm.nih.gov/genomes/Bacteria/>`__, download a proteome
    of interest (you'll want the '.faa' files), and run the various BLASTs
    on 'em (e.g. find reciprocal best hits).
 
