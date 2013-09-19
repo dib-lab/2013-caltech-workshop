@@ -21,7 +21,7 @@ Wednesday 9/18   * 9am: lecture, `Short read mapping <_static/cemi-lecture-mappi
 		 * 1:15pm: assembly exercise
 		 * 2pm: lecture, `Assembly <_static/cemi-assembly.pptx.pdf>`__
 Thursday 9/19	 * lab: :doc:`assembly-lab` and :doc:`blastkit`
-	 	 * ~10am: lecture: metagenome assembly
+	 	 * ~10am: lecture: `metagenome assembly <_static/2013-cemi-metag-assembly.pptx.pdf>`__
 	 	 * late morning lab: :doc:`prokka-annotation`
 		 * afternoon lab: :doc:`some-exercises`
 	 	 * afternoon lecture: pipelines and automation
