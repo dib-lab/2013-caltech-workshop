@@ -1,6 +1,13 @@
 Understanding Read Formats and Quality Controlling Data
 =======================================================
 
+Note: there are generic instructions for doing quality control at the
+`khmer-protocols Web site
+<https://khmer-protocols.readthedocs.org/>`__.  These should work for
+most Illumina data sets, even those consisting of multiple files.
+Below, we've done a bit of a shorthand because we only have a small
+data set to filter.
+
 The fastq Format
 ````````````````
 After spending weeks, nay, months of time on designing your study and planning your
@@ -134,11 +141,16 @@ And finally, FastQC, which is a program for assessing quality, finding contamina
 and generally producing nice plots::
 
     apt-get -y install lighttpd
+
+Now, configure::
+
     cd /etc/lighttpd/conf-enabled
     ln -fs ../conf-available/10-cgi.conf ./
     echo 'cgi.assign = ( ".cgi" => "" )' >> 10-cgi.conf
     echo 'index-file.names += ( "index.cgi" ) ' >> 10-cgi.conf
     /etc/init.d/lighttpd restart
+
+And install FastQC::
 
     cd /usr/local/share
     curl -O http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.10.1.zip

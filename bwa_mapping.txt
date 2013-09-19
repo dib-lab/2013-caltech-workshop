@@ -79,7 +79,11 @@ To speed up the demonstration, we will just map a subset of the reads rather tha
 the entire file, which is somewhat large (though small compared to many datasets).
 The head command outputs the first n lines of a file, by default 4::
 
+<<<<<<< HEAD
     cd ecoli/
+=======
+    cd ecoli
+>>>>>>> 692522babfa2a80ac77d1eb2a6cf1619453d108e
     head -n 400000 SRR390202.pe.qc.fq.gz > ecoli_pe.fq
     head -n 400000 SRR390202.se.qc.fq.gz > ecoli_se.fq
 
