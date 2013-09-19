@@ -81,7 +81,7 @@ Alternatively, you can download the already prepared data sets::
 
    curl -O https://s3.amazonaws.com/public.ged.msu.edu/SRR390202.pe.qc.fq.gz.keep.abundfilt.pe.keep.gz
    curl -O https://s3.amazonaws.com/public.ged.msu.edu/SRR390202.pe.qc.fq.gz.keep.abundfilt.se.keep.gz
-   https://s3.amazonaws.com/public.ged.msu.edu/SRR390202.se.qc.fq.gz.keep.abundfilt.keep.gz
+   curl -O https://s3.amazonaws.com/public.ged.msu.edu/SRR390202.se.qc.fq.gz.keep.abundfilt.keep.gz
    gunzip *.keep.gz
    
 Using Velvet to do assembly
