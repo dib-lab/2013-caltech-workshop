@@ -86,7 +86,7 @@ Download an E. coli assembly (this is the one produced by Velvet for k=41 in :do
 
 And ... finally, run Prokka on the downloaded file! ::
 
-   ../prokka-1.7/bin/prokka ecoli-v41.fa --outdir ecoli0104 --prefix ecoli0104
+   ../prokka-1.7/bin/prokka ecoli-v41.fa --outdir ecoli0104 --prefix ecoli0104 --force
 
 This will produce a bunch of files in a directory named 'ecoli0104'.
 The ``ecoli0104.faa`` file will contain the predicted & annotated
