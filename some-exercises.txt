@@ -1,0 +1,33 @@
+Some exercises to try
+=====================
+
+0. Finish or re-run one of the tutorials that you're particularly interested
+   in.
+
+1. Download and assemble some reads from the Short Read Archive (SRA)
+   or elsewhere.
+
+   Remember that `the ENA at EBI <http://www.ebi.ac.uk/ena/>`__ offers
+   FASTQ downloads of SRA sequence.
+
+   (see these tutorials: :doc:`reads_and_qc` and `assembly-lab`)
+
+2. Browse the `NCBI Bacterial genomes site
+   <http://ftp.ncbi.nlm.nih.gov/genomes/Bacteria>`__, download a proteome
+   of interest (you'll want the '.faa' files), and run the various BLASTs
+   on 'em (e.g. find reciprocal best hits).
+
+   See the instructions here: :doc:`tuesday`.
+
+3. Map raw reads for the E. coli 0104 genome back to your assembly --
+   e.g. take the assembly at http://athyra.idyll.org/~t/ecoli-v41.fa
+   and map the QC reads to it (see :doc:`bwa_mapping`).
+
+   Bonus: load the resulting read mapping into Tablet.
+
+   Bonus x 2: use the Prokka annotation .gff file to define features
+   in Tablet.  (If you didn't get all the way through the Prokka run,
+   you can download a zip file of the results here:
+   http://athyra.idyll.org/~t/ecoli0104-prokka.zip)
+
+.. 4. BLAST overlap of assemblies.

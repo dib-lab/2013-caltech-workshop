@@ -176,7 +176,7 @@ htmlhelp_basename = 'labibidoc'
 
 html_context = {
    "google_analytics_id" : 'UA-36028965-1',
-   "disqus_shortname" : '2013-caltech-workshop',
+   "disqus_shortname" : '2013-caltech-cemi',
    "github_base_account" : 'ged-lab',
    "github_project" : '2013-caltech-workshop',
 }

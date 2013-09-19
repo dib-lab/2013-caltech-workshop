@@ -72,8 +72,8 @@ To take a quick look at the files, use less::
 Hit 'q' to quit less.
 
 These reads are compressed with gzip to save some space, and are in two files, 
-because they are paired -- the first read in :doc:`SRR390202_1.fastq.gz`
-is paired with the first read in :doc:`SRR390202_2.fastq.gz` and so on. Some programs
+because they are paired -- the first read in ``SRR390202_1.fastq.gz``
+is paired with the first read in ``SRR390202_2.fastq.gz`` and so on. Some programs
 prefer paired reads to be interleaved, that is, in the same file alternating between
 the first and second read pair. Many programs also require the name field in
 the fasta/q to explicitly state which part of a pair a read is with a /1 or /2; for example,
@@ -110,7 +110,7 @@ of software for counting k-mers, also developed by our lab (more on that later):
     make
 
 Now that we've downloaded and built khmer, we'll add it to the system's python
-PATH so that our scripts now where to find it::
+PATH so that our scripts know where to find it::
 
     echo 'export PYTHONPATH=/usr/local/share/khmer/python' >> ~/.bashrc
     source ~/.bashrc
@@ -186,7 +186,7 @@ ahead and access it. In a new browser tab, go to::
 replacing the question marks with your EC2 URL. You should be presented with
 something like `this <http://ec2-50-16-8-137.compute-1.amazonaws.com/ecoli_fastqc/>`__.
 There is a folder for each of your sequence files, each of which contains a file
-called :doc:`fastqc_report.html`. Clicking on that file will render the report
+called ``fastqc_report.html``. Clicking on that file will render the report
 in your browser.
 
 Trimming Your Data

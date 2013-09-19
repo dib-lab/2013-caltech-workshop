@@ -2,7 +2,9 @@
 Basic (single-genome) assembly
 ==============================
 
-.. @screen
+(You'll need to have screed and khmer installed; if you ran through
+:doc:`reads_and_qc` then you already do.  Otherwise, follow the
+instructions at the top of that tutorial.)
 
 We're going to work through an assembly pipeline that uses a Brown Lab
 approach called `digital normalization
@@ -15,6 +17,12 @@ instructions to do it yourself.  It should take ~20 minutes to run
 through these commands yourself, OR you can just go ahead and
 download (section after this one).
 
+.. note::
+
+   Many of the commands below take 5-10 minutes to run, or longer.  You
+   may want to look at using a program called 'screen' to run long-running
+   programs safely -- see :doc:`amazon/using-screen`.
+
 Before we do anything with data, make an assembly directory::
 
    cd /mnt
@@ -24,10 +32,18 @@ Before we do anything with data, make an assembly directory::
 Preparing the data yourself
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Download the quality-filtered data (see :doc:`reads_and_qc`)::
+Download the quality-filtered data (see :doc:`reads_and_qc` to make them
+yourself)::
 
    curl -O https://s3.amazonaws.com/public.ged.msu.edu/SRR390202.pe.qc.fq.gz
    curl -O https://s3.amazonaws.com/public.ged.msu.edu/SRR390202.se.qc.fq.gz
+
+.. note::
+
+   If you already have downloaded these files during the mapping tutorial,
+   you can do::
+
+      cp /mnt/ecoli/SRR*.qc.fq.gz .
 
 Now, run it through digital normalization::
    
@@ -83,6 +99,10 @@ Install the Velvet software::
    cd velvet_1.2.10
    make MAXKMERLENGTH=51
    cp velvet? /usr/local/bin
+
+Return to the assembly directory::
+
+   cd /mnt/assembly
    
 Then run velvet for several different k values::
    
@@ -142,29 +162,29 @@ or compare::
 
    python /usr/local/share/khmer/sandbox/assemstats3.py 1000 ecoli.??/contigs.fa ecoli.spades/scaffolds.fasta
 
-Using IDBA to do assembly
-=========================
+.. Using IDBA to do assembly
+.. =========================
 
-(Note: this does not currently work for me; IDBA crashes. --titus)
+.. (Note: this does not currently work for me; IDBA crashes. --titus)
 
-You can also try out the `IDBA assembler <http://i.cs.hku.hk/~alse/hkubrg/projects/idba_ud/>`__::
+.. You can also try out the `IDBA assembler <http://i.cs.hku.hk/~alse/hkubrg/projects/idba_ud/>`__::
 
-   curl -O http://hku-idba.googlecode.com/files/idba-1.1.1.tar.gz
-   tar xzf idba-1.1.1.tar.gz 
-   cd idba-1.1.1/
-   ./configure && make
-   cp bin/idba_ud /usr/local/bin
+..   curl -O http://hku-idba.googlecode.com/files/idba-1.1.1.tar.gz
+..   tar xzf idba-1.1.1.tar.gz 
+..   cd idba-1.1.1/
+..   ./configure && make
+..   cp bin/idba_ud /usr/local/bin
 
-Now, go back to the data directory::
+.. Now, go back to the data directory::
 
-   cd /mnt/assembly
+..   cd /mnt/assembly
 
-and run it IDBA.  Note, here you are making a copy of the .keep file
-so that it has a '.fq' on the end; this is because IDBA expects the
-file name to indicate the sequence type::
+.. and run it IDBA.  Note, here you are making a copy of the .keep file
+.. so that it has a '.fq' on the end; this is because IDBA expects the
+.. file name to indicate the sequence type::
 
-   cp SRR390202.pe.qc.fq.gz.keep.abundfilt.pe.keep SRR390202.pe.qc.fq.gz.keep.abundfilt.pe.keep.fq
-   idba_ud --pre_correction -l SRR390202.pe.qc.fq.gz.keep.abundfilt.pe.keep.fq -o idba.dn.d
+..    cp SRR390202.pe.qc.fq.gz.keep.abundfilt.pe.keep SRR390202.pe.qc.fq.gz.keep.abundfilt.pe.keep.fq
+..    idba_ud --pre_correction -l SRR390202.pe.qc.fq.gz.keep.abundfilt.pe.keep.fq -o idba.dn.d
 
 ----
 

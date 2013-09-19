@@ -62,14 +62,11 @@ if you missed that, you'll eventually want to run through it in :doc:`reads_and_
 but for now, you can just grab the quality-controlled data with::
 
     cd /mnt
-    mkdir -p ecoli
     curl -O https://s3.amazonaws.com/public.ged.msu.edu/SRR390202.pe.qc.fq.gz
     curl -O https://s3.amazonaws.com/public.ged.msu.edu/SRR390202.se.qc.fq.gz
     
 You'll also need a reference genome, which can be acquired with::
 
-     cd /mnt
-     mkdir -p ecoli
      curl -O http://ftp.ncbi.nlm.nih.gov/genomes/Bacteria/Escherichia_coli_O104_H4_2011C_3493_uid176127/NC_018658.fna
 
 Mapping the Reads
@@ -79,17 +76,15 @@ To speed up the demonstration, we will just map a subset of the reads rather tha
 the entire file, which is somewhat large (though small compared to many datasets).
 The head command outputs the first n lines of a file, by default 4::
 
-<<<<<<< HEAD
-    cd ecoli/
-=======
-    cd ecoli
->>>>>>> 692522babfa2a80ac77d1eb2a6cf1619453d108e
-    head -n 400000 SRR390202.pe.qc.fq.gz > ecoli_pe.fq
-    head -n 400000 SRR390202.se.qc.fq.gz > ecoli_se.fq
+    mkdir -p /mnt/ecoli
+    cd /mnt/ecoli
+    gunzip -c ../SRR390202.pe.qc.fq.gz | head -400000 > ecoli_pe.fq
+    gunzip -c ../SRR390202.se.qc.fq.gz | head -400000 > ecoli_se.fq
 
 We've got our reads and a reference, so we're ready to get started. First, we
 build an index of the reference genome using bwa::
 
+    mv ../NC_018658.fna .
     bwa index -a bwtsw NC_018658.fna 
 
 The -a flag tells bwa which indexing algorithm to use. The program will automatically
@@ -101,8 +96,24 @@ format of. Thus, we run the alignment like so::
 which aligns the left and right reads against the reference, and outputs them
 to the given SAM file. SAM is a common format for alignments which is understood
 by many programs, along with BAM. It's often useful to have both, so we'll use
-a utility called samtools to produce a sorted BAM file as well::
+a utility called samtools to produce a sorted BAM file as well.  First,
+install samtools::
 
+    cd /mnt
+    curl -O -L http://sourceforge.net/projects/samtools/files/samtools/0.1.18/samtools-0.1.18.tar.bz2
+    tar xvfj samtools-0.1.18.tar.bz2
+    cd samtools-0.1.18
+    make
+    cp samtools /usr/local/bin
+    cd misc/
+    cp *.pl maq2sam-long maq2sam-short md5fa md5sum-lite wgsim /usr/local/bin/
+    cd ..
+    cd bcftools
+    cp *.pl bcftools /usr/local/bin/
+
+Then, run samtools to do the conversion::
+
+    cd /mnt/ecoli
     samtools view -uS aln.x.ecoli_NC_018658.sam > aln.x.ecoli_NC_018658.bam
     samtools sort aln.x.ecoli_NC_018658.bam aln.x.ecoli_NC_018658.bam.sorted
     samtools index aln.x.ecoli_NC_018658.bam.sorted.bam
