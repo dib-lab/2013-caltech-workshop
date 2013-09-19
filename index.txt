@@ -25,6 +25,7 @@ Thursday 9/19	 * lab: :doc:`assembly-lab` and :doc:`blastkit`
 	 	 * late morning lab: :doc:`prokka-annotation`
 		 * afternoon lab: :doc:`some-exercises`
 	 	 * afternoon lecture: pipelines and automation
+		 * tutorial: `the shell <https://github.com/swcarpentry/boot-camps/tree/2013-06-wise-beginners/shell>`__
 Friday 9/20	 * **Arms building first floor (Buwalda Room 151A)**
        		 * 9am: lecture: metagenome assembly, binding site finding, etc
        		 * morning: open lab time to work through pipelines
