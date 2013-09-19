@@ -93,3 +93,8 @@ The ``ecoli0104.faa`` file will contain the predicted & annotated
 proteins, while the ``ecoli0104.fna`` file contains the original
 contigs.  This directory contains all of the files necessary to submit
 the genome to NCBI, too.
+
+To look at the .faa, try::
+
+   head ecoli0104/ecoli0104.faa
+
