@@ -14,7 +14,7 @@ We'll need a few things::
     mkdir scavenger-hunt
     cd scavenger-hunt
 
-    curl -O http://athyra.idyll.org/~cswelcher/assembly-scavenger-hunt/reads/reads.di4qU4/scavenger_reads.fa
+    curl -O http://athyra.idyll.org/~cswelcher/assembly-scavenger-hunt/reads/reads.svZjxD/scavenger_reads.fa
     curl -O http://athyra.idyll.org/~cswelcher/dna2text.py
     curl -O http://athyra.idyll.org/~cswelcher/dnatextutils.py
 
