@@ -29,7 +29,7 @@ Thursday 9/19	 * lab: :doc:`assembly-lab` and :doc:`blastkit`
 
 Friday 9/20	 * **Arms building first floor (Buwalda Room 151A)**
        		 * 9am: lecture: `metagenome assembly <2013-cemi-assembly-methods.pptx.pdf>`__
-       		 * morning: open lab time to work through pipelines
+       		 * morning: open lab time to work through pipelines (see especially `Kalamazoo Metagenome Assembly <https://khmer-protocols.readthedocs.org/en/latest/metagenomics/>`__ and :doc:`some-exercises`
 		 * **ends** 1pm; lunch with Titus, Chris, Yoshiki at Sansai.
 ===============  =============================================================
 
