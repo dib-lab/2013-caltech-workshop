@@ -32,4 +32,15 @@ Some exercises to try
 
 4. Assemble the provided ecoli reads *without* digital normalization.
 
-.. 4. BLAST overlap of assemblies.
+5. Install BLAST and the ngs-scripts, and then try comparing an assembly
+   with a genome by using the following commands::
+
+      blastall -i assembly.fa -d genome.fa -p blastn -e 1e-20 -o assembly.x.genome.blastn
+      blastall -d assembly.fa -i genome.fa -p blastn -e 1e-20 -o genome.x.assembly.blastn
+
+      python /usr/local/share/ngs-scripts/blast/calc-blast-cover.py genome.fa assembly.x.genome.blastn 300 assembly.fa
+      python /usr/local/share/ngs-scripts/blast/calc-blast-cover.py assembly.fa genome.x.assembly.blastn 300 genome.fa
+
+6. Try taking one of the assemblies
+   (e.g. http://athyra.idyll.org/~t/ecoli-v41.fa) and mapping the QC
+   reads used to assemble it back to it, to assess assembly completeness.
