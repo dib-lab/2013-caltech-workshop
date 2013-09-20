@@ -45,4 +45,8 @@ Which you can then look at with ``less``::
 Further, you might want to make use of an ipython notebook which plots
 k-mer abundance distributions, and could help you with parameters::
 
-    curl  
+    curl http://2013-caltech-workshop.readthedocs.org/en/latest/_static/caltech-2013-scavenger-hunt.ipynb > /usr/local/notebooks/2013-caltech-scavenger-hunt.ipynb
+
+Which you can then access by going to https://ec2-???????????.compute-1.amazonaws.com.
+
+Happy hunting!
