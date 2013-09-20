@@ -1,0 +1,48 @@
+Assembly Scavenger Hunt
+=======================
+
+This exercise is meant to bring together knowledge from the whole week,
+and also just be fun. I've taken some pain text, embedded it in
+DNA with a simple algorithm along with some random sequence,
+and fragmented it to produce reads. Your job will be to assemble
+the reads and put the results back through the script to retrieve the 
+original message.
+
+We'll need a few things::
+
+    cd /mnt
+    mkdir scavenger-hunt
+    cd scavenger-hunt
+
+    curl -O http://athyra.idyll.org/~cswelcher/assembly-scavenger-hunt/reads/reads.di4qU4/scavenger_reads.fa
+    curl -O http://athyra.idyll.org/~cswelcher/dna2text.py
+    curl -O http://athyra.idyll.org/~cswelcher/dnatextutils.py
+
+You should have velvet already, but if not::
+    
+    cd /root
+    curl -O http://www.ebi.ac.uk/~zerbino/velvet/velvet_1.2.10.tgz
+    tar xzf velvet_1.2.10.tgz
+    cd velvet_1.2.10
+    make MAXKMERLENGTH=51
+    cp velvet? /usr/local/bin
+
+    cd /mnt/scavenger-hunt
+
+You'll want to use velvet to assemble ``scavenger_reads.fa``. They're 36-base singled-ended
+reads, and like an actual metagenome, have variable coverage. This means that you might need
+to do some parameter exploration to get the contigs you want out of it; I would recommend
+looking at the ``exp_cov`` parameter of ``velvetg`` in particular.
+
+To decode your results, make use of the dna2text.py script. It's usage is::
+
+    python dna2text.py contigs.fa > contigs.text
+
+Which you can then look at with ``less``::
+    
+    less contigs.text
+
+Further, you might want to make use of an ipython notebook which plots
+k-mer abundance distributions, and could help you with parameters::
+
+    curl  
