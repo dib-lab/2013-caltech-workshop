@@ -175,7 +175,7 @@ htmlhelp_basename = 'labibidoc'
 # Various settings to pass to templates:
 
 html_context = {
-   "google_analytics_id" : 'UA-36028965-1',
+   "google_analytics_id" : 'UA-16853172-2',
    "disqus_shortname" : '2013-caltech-cemi',
    "github_base_account" : 'ged-lab',
    "github_project" : '2013-caltech-workshop',
