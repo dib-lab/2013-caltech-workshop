@@ -44,7 +44,7 @@ source_suffix = '.txt'
 master_doc = 'index'
 
 # General information about the project.
-project = u'2013-caltechworkshop'
+project = u'2014-argonne-soils-automation'
 copyright = u'2013, C. Titus Brown and Chris Welcher'
 
 # The version info for the project you're documenting, acts as replacement for
