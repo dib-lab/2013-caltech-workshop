@@ -4,6 +4,7 @@ root: ../..
 title: Shell Scripts
 ---
 
+#### Shell Scripts
 
 #### Objectives
 *   Write a shell script that runs a command or series of commands for a fixed set of files.

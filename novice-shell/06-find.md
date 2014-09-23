@@ -4,6 +4,7 @@ root: ../..
 title: Finding Things
 ---
 
+#### Finding Things
 
 #### Objectives
 *   Use `grep` to select lines from text files that match simple patterns.

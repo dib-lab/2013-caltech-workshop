@@ -4,6 +4,7 @@ root: ../..
 title: Pipes and Filters
 ---
 
+#### Pipes and Filters
 
 #### Objectives
 *   Redirect a command's output to a file.

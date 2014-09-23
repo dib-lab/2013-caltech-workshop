@@ -4,6 +4,7 @@ root: ../..
 title: Loops
 ---
 
+#### Loops
 
 #### Objectives
 *   Write a loop that applies one or more commands separately to each file in a set of files.

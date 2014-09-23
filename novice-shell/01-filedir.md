@@ -4,6 +4,7 @@ root: ../..
 title: Files and Directories
 ---
 
+#### Files and Directories
 
 #### Objectives
 *   Explain the similarities and differences between a file and a directory.
