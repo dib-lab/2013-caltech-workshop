@@ -10,18 +10,20 @@
 Day              Schedule
 ===============  =============================================================
 Friday 10/03     * 1:30pm-5:00pm:  Automating things with the shell 
-   		 * Files & Directories 
-		 * Creating things
-		 * Pipes and filters
-		 * Loops
-		 * Scripts
-                 * Finding things
-Saturday 10/04   * 2:30: lecture: `BLAST <_static/cemi-lecture-blast.pptx.pdf>`__
-		 * Afternoon lab 1: :doc:`amazon/index`
+                 * :doc:`novice-shell/00-intro` (What is going on?)
+   		 * :doc:`novice-shell/01-filedir` (cd,ls)
+		 * :doc:`novice-shell/02-create` (mv,rm,cp)
+		 * :doc:`novice-shell/03-pipefilter` 
+		 * :doc:`novice-shell/04-loop` (for)
+		 * :doc:`novice-shell/05-script` (Doing Stuff)
+                 * :doc:`novice-shell/06-find` (find,grep)
+
+
+Saturday 10/04   * 2:30-5:00pm 
+                 * Titus's notes on `BLAST <_static/cemi-lecture-blast.pptx.pdf>`__
+		 * Lab 1: instances: :doc:`amazon/index`
                  * 3:30: lecture, `Short read mapping <_static/cemi-lecture-mapping.pptx.pdf>`__
-	  	 * morning lab 2: :doc:`bwa_mapping`
-		 * 1:15pm: assembly exercise
-		 * 2pm: lecture, `Assembly <_static/cemi-assembly.pptx.pdf>`__
+	  	 * Lab 2: :doc:`bwa_mapping`
 ===============  =============================================================
 
 
