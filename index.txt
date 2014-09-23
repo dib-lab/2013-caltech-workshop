@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-2014 Argonne Soils Meeting -- Automation workshop
-=============================
+Automation Workshop Welcome
+===========================
 
 ===============  =============================================================
 Day              Schedule
@@ -32,10 +32,7 @@ For even more resources on these topics, check out the course website for the
 and the remarkable set of Software Carpentry `computational training materials <http://software-carpentry.org/lessons.html>`__.
 
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. * :ref:`genindex`
+.. * :ref:`modindex`
+.. * :ref:`search`
 
