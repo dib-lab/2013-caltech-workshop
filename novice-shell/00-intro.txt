@@ -1,5 +1,5 @@
 Introducing the Shell
-^^^^^^^^^^^^^^^^^^^^^
+*********************
 
 Objectives
 ^^^^^^^^^^
