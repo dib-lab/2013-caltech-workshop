@@ -3,7 +3,7 @@ layout: lesson
 root: ../..
 title: Files and Directories
 ---
-<div class="objectives" markdown="1">
+
 
 #### Objectives
 *   Explain the similarities and differences between a file and a directory.
@@ -13,7 +13,7 @@ title: Files and Directories
 *   Identify the actual command, flags, and filenames in a command-line call.
 *   Demonstrate the use of tab completion, and explain its advantages.
 
-</div>
+
 
 The part of the operating system responsible for managing files and directories
 is called the [file system](../../gloss.html#filesystem).
@@ -29,7 +29,7 @@ let's open a shell window:
 ~~~
 $
 ~~~
-{:class="in"}
+
 
 The dollar sign is a [prompt](../../gloss.html#prompt),
 which shows us that the shell is waiting for input;
@@ -48,7 +48,7 @@ file to unpack it. On linux you can type in a command like
 $ cd Downloads
 $ unzip filesystem.zip
 ~~~
-{:class="in"}
+
 
 Once you have Nelle's files and directories, change to Nelle's home directory to
 begin, by typing in the `cd` command:
@@ -56,7 +56,7 @@ begin, by typing in the `cd` command:
 ~~~
 $ cd Downloads/filesystem/users/nelle
 ~~~
-{:class="in"}
+
 
 Don't worry if you don't know what this command means yet! We will cover it soon.
 
@@ -71,11 +71,11 @@ it shows us who the shell thinks we are:
 ~~~
 $ whoami
 ~~~
-{:class="in"}
+
 ~~~
 nelle
 ~~~
-{:class="out"}
+
 
 More specifically, when we type `whoami` the shell:
 
@@ -100,11 +100,11 @@ which is Nelle's [home directory](../../gloss.html#home-directory):
 ~~~
 $ pwd
 ~~~
-{:class="in"}
+
 ~~~
 /users/nelle
 ~~~
-{:class="out"}
+
 
 > #### Alphabet Soup
 >
@@ -154,13 +154,13 @@ which stands for "listing":
 ~~~
 $ ls
 ~~~
-{:class="in"}
+
 ~~~
 creatures  molecules           pizza.cfg
 data       north-pacific-gyre  solar.pdf
 Desktop    notes.txt           writing
 ~~~
-{:class="out"}
+
 
 <img src="img/homedir.svg" alt="Nelle's Home Directory" />
 
@@ -172,13 +172,13 @@ which tells `ls` to add a trailing `/` to the names of directories:
 ~~~
 $ ls -F
 ~~~
-{:class="in"}
+
 ~~~
 creatures/  molecules/           pizza.cfg
 data/       north-pacific-gyre/  solar.pdf
 Desktop/    notes.txt            writing/
 ~~~
-{:class="out"}
+
 
 Here,
 we can see that `filesystem/users/nelle` contains seven [sub-directories](../../gloss.html#sub-directory).
@@ -220,12 +220,12 @@ we want a listing of something other than our current working directory:
 ~~~
 $ ls -F data
 ~~~
-{:class="in"}
+
 ~~~
 amino-acids.txt   elements/     morse.txt
 pdb/              planets.txt   sunspot.txt
 ~~~
-{:class="out"}
+
 
 The output shows us that there are four text files and two sub-sub-directories.
 Organizing things hierarchically in this way helps us keep track of our work:
@@ -256,12 +256,12 @@ because `/data` is an [absolute path](../../gloss.html#absolute-path):
 ~~~
 $ ls -F /data
 ~~~
-{:class="in"}
+
 ~~~
 access.log    backup/    hardware.cfg
 network.cfg
 ~~~
-{:class="out"}
+
 
 The leading `/` tells the computer to follow the path from the root of the filesystem,
 so it always refers to exactly one directory,
@@ -275,21 +275,21 @@ and `ls` without any arguments shows us that directory's contents:
 ~~~
 $ pwd
 ~~~
-{:class="in"}
+
 ~~~
 /Users/SWC/Downloads/filesystem/users/nelle
 ~~~
-{:class="out"}
+
 ~~~
 $ ls
 ~~~
-{:class="in"}
+
 ~~~
 creatures  molecules           pizza.cfg
 data       north-pacific-gyre  solar.pdf
 Desktop    notes.txt           writing
 ~~~
-{:class="out"}
+
 
 We can use `cd` followed by a directory name to change our working directory.
 `cd` stands for "change directory",
@@ -300,7 +300,7 @@ it changes the shell's idea of what directory we are in.
 ~~~
 $ cd data
 ~~~
-{:class="in"}
+
 
 `cd` doesn't print anything,
 but if we run `pwd` after it, we can see that we are now in `/Users/SWC/Downloads/filesystem/users/nelle/data`.
@@ -311,20 +311,20 @@ because that's where we now are:
 ~~~
 $ pwd
 ~~~
-{:class="in"}
+
 ~~~
 /Users/SWC/Downloads/filesystem/users/nelle/data
 ~~~
-{:class="out"}
+
 ~~~
 $ ls -F
 ~~~
-{:class="in"}
+
 ~~~
 amino-acids.txt   elements/     morse.txt
 pdb/              planets.txt   sunspot.txt
 ~~~
-{:class="out"}
+
 
 We now know how to go down the directory tree:
 how do we go up?
@@ -333,22 +333,22 @@ We could use an absolute path:
 ~~~
 $ cd /users/nelle
 ~~~
-{:class="in"}
+
 
 but it's almost always simpler to use `cd ..` to go up one level:
 
 ~~~
 $ pwd
 ~~~
-{:class="in"}
+
 ~~~
 /users/nelle/data
 ~~~
-{:class="out"}
+
 ~~~
 $ cd ..
 ~~~
-{:class="in"}
+
 
 `..` is a special directory name meaning
 "the directory containing this one",
@@ -360,11 +360,11 @@ if we run `pwd` after running `cd ..`, we're back in `/users/nelle`:
 ~~~
 $ pwd
 ~~~
-{:class="in"}
+
 ~~~
 /users/nelle
 ~~~
-{:class="out"}
+
 
 The special directory `..` doesn't usually show up when we run `ls`.
 If we want to display it, we can give `ls` the `-a` flag:
@@ -372,14 +372,14 @@ If we want to display it, we can give `ls` the `-a` flag:
 ~~~
 $ ls -F -a
 ~~~
-{:class="in"}
+
 ~~~
 ./          Desktop/             pizza.cfg
 ../         molecules/           solar.pdf
 creatures/  north-pacific-gyre/  writing/
 data/       notes.txt
 ~~~
-{:class="out"}
+
 
 `-a` stands for "show all";
 it forces `ls` to show us file and directory names that begin with `.`,
@@ -441,7 +441,7 @@ Nelle can see what files she has using the command:
 ~~~
 $ ls north-pacific-gyre/2012-07-03/
 ~~~
-{:class="in"}
+
 
 This is a lot to type,
 but she can let the shell do most of the work.
@@ -450,7 +450,7 @@ If she types:
 ~~~
 $ ls nor
 ~~~
-{:class="in"}
+
 
 and then presses tab,
 the shell automatically completes the directory name for her:
@@ -458,7 +458,7 @@ the shell automatically completes the directory name for her:
 ~~~
 $ ls north-pacific-gyre/
 ~~~
-{:class="in"}
+
 
 If she presses tab again,
 Bash will add `2012-07-03/` to the command,
@@ -470,7 +470,7 @@ and so on.
 This is called [tab completion](../../gloss.html#tab-completion),
 and we will see it in many other tools as we go on.
 
-<div class="keypoints" markdown="1">
+
 
 #### Key Points
 *   The file system is responsible for managing information on the disk.
@@ -488,20 +488,20 @@ and we will see it in many other tools as we go on.
     but is normally used to indicate the type of data in the file.
 *   Most commands take options (flags) which begin with a '-'.
 
-</div>
+
 
 <img src="img/filesystem-challenge.svg" alt="Filesystem for Challenge Questions" />
 
-<div class="challenge" markdown="1">
+
 If `pwd` displays `/users/thing`, what will `ls ../backup` display?
 
 1.  `../backup: No such file or directory`
 2.  `2012-12-01 2013-01-08 2013-01-27`
 3.  `2012-12-01/ 2013-01-08/ 2013-01-27/`
 4.  `original pnas_final pnas_sub`
-</div>
 
-<div class="challenge" markdown="1">
+
+
 If `pwd` displays `/users/backup`,
 and `-r` tells `ls` to display things in reverse order,
 what command will display:
@@ -514,17 +514,17 @@ pnas-sub/ pnas-final/ original/
 2.  `ls -r -F`
 3.  `ls -r -F /users/backup`
 4.  Either \#2 or \#3 above, but not \#1.
-</div>
 
-<div class="challenge" markdown="1">
+
+
 What does the command `cd` without a directory name do?
 
 1.  It has no effect.
 2.  It changes the working directory to `/`.
 3.  It changes the working directory to the user's home directory.
 4.  It produces an error message.
-</div>
 
-<div class="challenge" markdown="1">
+
+
 What does the command `ls` do when used with the -s and -h arguments?
-</div>
+

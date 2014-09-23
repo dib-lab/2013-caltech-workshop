@@ -3,7 +3,7 @@ layout: lesson
 root: ../..
 title: Finding Things
 ---
-<div class="objectives" markdown="1">
+
 
 #### Objectives
 *   Use `grep` to select lines from text files that match simple patterns.
@@ -11,7 +11,7 @@ title: Finding Things
 *   Use the output of one command as the command-line parameters to another command.
 *   Explain what is meant by "text" and "binary" files, and why many common tools don't handle the latter well.
 
-</div>
+
 
 You can guess someone's age by how they talk about search:
 young people use "Google" as a verb,
@@ -31,7 +31,7 @@ $ cd
 $ cd writing
 $ cat haiku.txt
 ~~~
-{:class="in"}
+
 ~~~
 The Tao that is seen
 Is not the true Tao, until
@@ -45,7 +45,7 @@ Yesterday it worked
 Today it is not working
 Software is like that.
 ~~~
-{:class="out"}
+
 
 > #### Forever, or Five Years
 >
@@ -58,13 +58,13 @@ Let's find lines that contain the word "not":
 ~~~
 $ grep not haiku.txt
 ~~~
-{:class="in"}
+
 ~~~
 Is not the true Tao, until
 "My Thesis" not found
 Today it is not working
 ~~~
-{:class="out"}
+
 
 Here, `not` is the pattern we're searching for.
 It's pretty simple:
@@ -77,12 +77,12 @@ Let's try a different pattern: "day".
 ~~~
 $ grep day haiku.txt
 ~~~
-{:class="in"}
+
 ~~~
 Yesterday it worked
 Today it is not working
 ~~~
-{:class="out"}
+
 
 This time,
 the output is lines containing the words "Yesterday" and "Today",
@@ -94,7 +94,7 @@ so that only lines with the word "day" will be printed:
 ~~~
 $ grep -w day haiku.txt
 ~~~
-{:class="in"}
+
 
 In this case, there aren't any, so `grep`'s output is empty.
 
@@ -103,13 +103,13 @@ Another useful option is `-n`, which numbers the lines that match:
 ~~~
 $ grep -n it haiku.txt
 ~~~
-{:class="in"}
+
 ~~~
 5:With searching comes loss
 9:Yesterday it worked
 10:Today it is not working
 ~~~
-{:class="out"}
+
 
 Here, we can see that lines 5, 9, and 10 contain the letters "it".
 
@@ -122,7 +122,7 @@ in any mix of upper and lower case:
 ~~~
 $ grep -i -v the haiku.txt
 ~~~
-{:class="in"}
+
 ~~~
 You bring fresh toner.
 
@@ -132,7 +132,7 @@ Yesterday it worked
 Today it is not working
 Software is like that.
 ~~~
-{:class="out"}
+
 
 `grep` has lots of other options.
 To find out what they are, we can type `man grep`.
@@ -143,7 +143,7 @@ and (if you're lucky) provides a few examples of how to use it:
 ~~~
 $ man grep
 ~~~
-{:class="in"}
+
 ~~~
 GREP(1)                                                                                              GREP(1)
 
@@ -179,7 +179,7 @@ Interpret PATTERN as a list of fixed strings, separated by newlines, any of  whi
 matched.  (-F is specified by POSIX.)
 ...        ...        ...
 ~~~
-{:class="out"}
+
 
 > #### Wildcards
 >
@@ -230,7 +230,7 @@ Sure enough,
 ~~~
 $ find . -type d
 ~~~
-{:class="in"}
+
 ~~~
 ./
 ./data
@@ -238,7 +238,7 @@ $ find . -type d
 ./tools
 ./tools/old
 ~~~
-{:class="out"}
+
 
 If we change `-type d` to `-type f`,
 we get a listing of all the files instead:
@@ -246,7 +246,7 @@ we get a listing of all the files instead:
 ~~~
 $ find . -type f
 ~~~
-{:class="in"}
+
 ~~~
 ./haiku.txt
 ./tools/stats
@@ -256,7 +256,7 @@ $ find . -type f
 ./data/one.txt
 ./data/two.txt
 ~~~
-{:class="out"}
+
 
 `find` automatically goes into subdirectories,
 their subdirectories,
@@ -267,11 +267,11 @@ we can use `-maxdepth` to restrict the depth of search:
 ~~~
 $ find . -maxdepth 1 -type f
 ~~~
-{:class="in"}
+
 ~~~
 ./haiku.txt
 ~~~
-{:class="out"}
+
 
 The opposite of `-maxdepth` is `-mindepth`,
 which tells `find` to only report things that are at or below a certain depth.
@@ -280,25 +280,25 @@ which tells `find` to only report things that are at or below a certain depth.
 ~~~
 $ find . -mindepth 2 -type f
 ~~~
-{:class="in"}
+
 ~~~
 ./data/one.txt
 ./data/two.txt
 ./tools/format
 ./tools/stats
 ~~~
-{:class="out"}
+
 
 Now let's try matching by name:
 
 ~~~
 $ find . -name *.txt
 ~~~
-{:class="in"}
+
 ~~~
 ./haiku.txt
 ~~~
-{:class="out"}
+
 
 We expected it to find all the text files,
 but it only prints out `./haiku.txt`.
@@ -309,7 +309,7 @@ the command we actually ran was:
 ~~~
 $ find . -name haiku.txt
 ~~~
-{:class="in"}
+
 
 `find` did what we asked; we just asked for the wrong thing.
 
@@ -322,13 +322,13 @@ This way,
 ~~~
 $ find . -name '*.txt'
 ~~~
-{:class="in"}
+
 ~~~
 ./data/one.txt
 ./data/two.txt
 ./haiku.txt
 ~~~
-{:class="out"}
+
 
 > #### Listing vs. Finding
 >
@@ -350,14 +350,14 @@ The simplest way is to put the `find` command inside `$()`:
 ~~~
 $ wc -l $(find . -name '*.txt')
 ~~~
-{:class="in"}
+
 ~~~
 11 ./haiku.txt
 300 ./data/two.txt
 70 ./data/one.txt
 381 total
 ~~~
-{:class="out"}
+
 
 When the shell executes this command,
 the first thing it does is run whatever is inside the `$()`.
@@ -368,7 +368,7 @@ the shell constructs the command:
 ~~~
 $ wc -l ./data/one.txt ./data/two.txt ./haiku.txt
 ~~~
-{:class="in"}
+
 
 which is what we wanted.
 This expansion is exactly what the shell does when it expands wildcards like `*` and `?`,
@@ -383,11 +383,11 @@ by looking for the string "FE" in all the `.pdb` files above the current directo
 ~~~
 $ grep FE $(find .. -name '*.pdb')
 ~~~
-{:class="in"}
+
 ~~~
 ../data/pdb/heme.pdb:ATOM     25 FE           1      -0.924   0.535  -0.518
 ~~~
-{:class="out"}
+
 
 > #### Binary Files
 >
@@ -426,26 +426,26 @@ North Whitehead wrote in 1911, "Civilization advances by extending the
 number of important operations which we can perform without thinking
 about them."
 
-<div class="keypoints" markdown="1">
+
 
 #### Key Points
 *   Use `find` to find files and directories, and `grep` to find text patterns in files.
 *   `$(command)` inserts a command's output in place.
 *   `man command` displays the manual page for a given command.
 
-</div>
 
-<div class="challenge" markdown="1">
+
+
 Write a short explanatory comment for the following shell script:
 
-<div class="file" markdown="1">
+
 ~~~
 find . -name '*.dat' | wc -l | sort -n
 ~~~
-</div>
-</div>
 
-<div class="challenge" markdown="1">
+
+
+
 The `-v` flag to `grep` inverts pattern matching, so that only lines
 which do *not* match the pattern are printed. Given that, which of
 the following commands will find all files in `/data` whose names
@@ -459,4 +459,4 @@ end in `ose.dat` (e.g., `sucrose.dat` or `maltose.dat`), but do
 3. `grep -v temp $(find /data -name '*ose.dat')`
 
 4. None of the above.
-</div>
+

@@ -11,7 +11,7 @@ it helps them combine existing programs in new ways
 and automate repetitive tasks
 so that they don't have to type the same things over and over again.
 
-<div class="toc" markdown="1">
+
 
 1.  [Introducing the Shell](00-intro.html)
 2.  [Files and Directories](01-filedir.html)
@@ -23,4 +23,4 @@ so that they don't have to type the same things over and over again.
 
 [Reference](../ref/01-shell.html)
 
-</div>
+
