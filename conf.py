@@ -45,7 +45,7 @@ master_doc = 'toc'
 
 # General information about the project.
 project = u'2014-argonne-soils-automation'
-copyright = u'2013, C. Titus Brown and Chris Welcher'
+copyright = u'2013-2014, C. Titus Brown, Chris Welcher, and Will Trimble'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -134,12 +134,12 @@ html_title = "2014 Argonne Soils Workshop automation workshop"
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-#html_logo = None
+html_logo = "images/Soil-digital-logo.png"
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
-#html_favicon = None
+html_favicon = "favicon.ico"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -217,10 +217,10 @@ latex_elements = {
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
-latex_documents = [
-  ('index', 'labibi.tex', u'labibi Documentation',
-   u'C. Titus Brown', 'manual'),
-]
+ # latex_documents = [
+ # ('index', 'labibi.tex', u'labibi Documentation',
+ #  u'C. Titus Brown', 'manual'),
+ # ]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
@@ -247,10 +247,10 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [
-    ('index', 'labibi', u'labibi Documentation',
-     [u'C. Titus Brown'], 1)
-]
+#man_pages = [
+#    ('index', 'labibi', u'labibi Documentation',
+#     [u'C. Titus Brown'], 1)
+#]
 
 # If true, show URL addresses after external links.
 #man_show_urls = False
@@ -261,11 +261,11 @@ man_pages = [
 # Grouping the document tree into Texinfo files. List of tuples
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
-texinfo_documents = [
-  ('index', 'labibi', u'labibi Documentation',
-   u'C. Titus Brown', 'labibi', 'One line description of project.',
-   'Miscellaneous'),
-]
+#texinfo_documents = [
+#  ('index', 'labibi', u'labibi Documentation',
+#   u'C. Titus Brown', 'labibi', 'One line description of project.',
+#   'Miscellaneous'),
+#]
 
 # Documents to append as an appendix to all manuals.
 #texinfo_appendices = []
