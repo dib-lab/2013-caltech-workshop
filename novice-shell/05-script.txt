@@ -11,6 +11,9 @@ Objectives
    user on the command line.
 -  Create pipelines that include user-written shell scripts.
 
+Now we're cooking
+^^^^^^^^^^^^^^^^^
+
 We are finally ready to see what makes the shell such a powerful
 programming environment. We are going to take the commands we repeat
 frequently and save them in files so that we can re-run all those
@@ -54,19 +57,19 @@ following command:
 Sure enough, our script's output is exactly what we would get if we ran
 that pipeline directly.
 
-    Text vs. Whatever
-    ^^^^^^^^^^^^^^^^^
+Text vs. Whatever
+^^^^^^^^^^^^^^^^^
 
-    We usually call programs like Microsoft Word or LibreOffice Writer
-    "text editors", but we need to be a bit more careful when it comes
-    to programming. By default, Microsoft Word uses ``.docx`` files to
-    store not only text, but also formatting information about fonts,
-    headings, and so on. This extra information isn't stored as
-    characters, and doesn't mean anything to tools like ``head``: they
-    expect input files to contain nothing but the letters, digits, and
-    punctuation on a standard computer keyboard. When editing programs,
-    therefore, you must either use a plain text editor, or be careful to
-    save files as plain text.
+We usually call programs like Microsoft Word or LibreOffice Writer
+"text editors", but we need to be a bit more careful when it comes
+to programming. By default, Microsoft Word uses ``.docx`` files to
+store not only text, but also formatting information about fonts,
+headings, and so on. This extra information isn't stored as
+characters, and doesn't mean anything to tools like ``head``: they
+expect input files to contain nothing but the letters, digits, and
+punctuation on a standard computer keyboard. When editing programs,
+therefore, you must either use a plain text editor, or be careful to
+save files as plain text.
 
 What if we want to select lines from an arbitrary file? We could edit
 ``middle.sh`` each time to change the filename, but that would probably
@@ -192,28 +195,28 @@ parameters to the shell script." Here's an example:
     163 ../creatures/basilisk.dat
     163 ../creatures/unicorn.dat
 
-    Why Isn't It Doing Anything?
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Why Isn't It Doing Anything?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    What happens if a script is supposed to process a bunch of files,
-    but we don't give it any filenames? For example, what if we type:
+What happens if a script is supposed to process a bunch of files,
+but we don't give it any filenames? For example, what if we type:
 
-    ::
+::
 
         $ bash sorted.sh
 
-    but don't say ``*.dat`` (or anything else)? In this case, ``$*``
-    expands to nothing at all, so the pipeline inside the script is
+but don't say ``*.dat`` (or anything else)? In this case, ``$*``
+expands to nothing at all, so the pipeline inside the script is
     effectively:
 
-    ::
+::
 
         wc -l | sort -n
 
-    Since it doesn't have any filenames, ``wc`` assumes it is supposed
-    to process standard input, so it just sits there and waits for us to
-    give it some data interactively. From the outside, though, all we
-    see is it sitting there: the script doesn't appear to do anything.
+Since it doesn't have any filenames, ``wc`` assumes it is supposed
+to process standard input, so it just sits there and waits for us to
+give it some data interactively. From the outside, though, all we
+see is it sitting there: the script doesn't appear to do anything.
 
 We have two more things to do before we're finished with our simple
 shell scripts. If you look at a script like:
@@ -360,6 +363,9 @@ Key Points
 -  ``$1``, ``$2``, etc., refer to specified command-line parameters.
 -  Letting users decide what files to process is more flexible and more
    consistent with built-in Unix commands.
+
+Exercises
+^^^^^^^^^
 
 Leah has several hundred data files, each of which is formatted like
 this:

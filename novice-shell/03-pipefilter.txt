@@ -11,6 +11,9 @@ Objectives
    input to process.
 -  Explain Unix's "small pieces, loosely joined" philosophy.
 
+Multi-step operations with bash
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Now that we know a few basic commands, we can finally look at the
 shell's most powerful feature: the ease with which it lets us combine
 existing programs in new ways. We'll start with a directory called
@@ -49,31 +52,31 @@ list of ``.pdb`` files:
       15  111  825 propane.pdb
      107  819 6081 total
 
-    Wildcards
-    ^^^^^^^^^
+Wildcards
+^^^^^^^^^
 
-    ``*`` is a `wildcard <../../gloss.html#wildcard>`__. It matches zero
-    or more characters, so ``*.pdb`` matches ``ethane.pdb``,
-    ``propane.pdb``, and so on. On the other hand, ``p*.pdb`` only
-    matches ``pentane.pdb`` and ``propane.pdb``, because the 'p' at the
-    front only matches itself.
+``*`` is a `wildcard <../../gloss.html#wildcard>`__. It matches zero
+or more characters, so ``*.pdb`` matches ``ethane.pdb``,
+``propane.pdb``, and so on. On the other hand, ``p*.pdb`` only
+matches ``pentane.pdb`` and ``propane.pdb``, because the 'p' at the
+front only matches itself.
 
-    ``?`` is also a wildcard, but it only matches a single character.
-    This means that ``p?.pdb`` matches ``pi.pdb`` or ``p5.pdb``, but not
-    ``propane.pdb``. We can use any number of wildcards at a time: for
-    example, ``p*.p?*`` matches anything that starts with a 'p' and ends
-    with '.', 'p', and at least one more character (since the '?' has to
-    match one character, and the final '\*' can match any number of
-    characters). Thus, ``p*.p?*`` would match ``preferred.practice``,
-    and even ``p.pi`` (since the first '\*' can match no characters at
-    all), but not ``quality.practice`` (doesn't start with 'p') or
-    ``preferred.p`` (there isn't at least one character after the '.p').
+``?`` is also a wildcard, but it only matches a single character.
+This means that ``p?.pdb`` matches ``pi.pdb`` or ``p5.pdb``, but not
+``propane.pdb``. We can use any number of wildcards at a time: for
+example, ``p*.p?*`` matches anything that starts with a 'p' and ends
+with '.', 'p', and at least one more character (since the '?' has to
+match one character, and the final '\*' can match any number of
+characters). Thus, ``p*.p?*`` would match ``preferred.practice``,
+and even ``p.pi`` (since the first '\*' can match no characters at
+all), but not ``quality.practice`` (doesn't start with 'p') or
+``preferred.p`` (there isn't at least one character after the '.p').
 
-    When the shell sees a wildcard, it expands the wildcard to create a
-    list of matching filenames *before* running the command that was
-    asked for. This means that commands like ``wc`` and ``ls`` never see
-    the wildcard characters, just what those wildcards matched. This is
-    another example of orthogonal design.
+When the shell sees a wildcard, it expands the wildcard to create a
+list of matching filenames *before* running the command that was
+asked for. This means that commands like ``wc`` and ``ls`` never see
+the wildcard characters, just what those wildcards matched. This is
+another example of orthogonal design.
 
 If we run ``wc -l`` instead of just ``wc``, the output shows only the
 number of lines per file:
@@ -263,18 +266,6 @@ other program that behaves this way as well. You can *and should* write
 your programs this way so that you and other people can put those
 programs into pipes to multiply their power.
 
-    Redirecting Input
-    ^^^^^^^^^^^^^^^^^
-
-    As well as using ``>`` to redirect a program's output, we can use
-    ``<`` to redirect its input, i.e., to read from a file instead of
-    from standard input. For example, instead of writing
-    ``wc ammonia.pdb``, we could write ``wc < ammonia.pdb``. In the
-    first case, ``wc`` gets a command line parameter telling it what
-    file to open. In the second, ``wc`` doesn't have any command line
-    parameters, so it reads from standard input, but we have told the
-    shell to send the contents of ``ammonia.pdb`` to ``wc``'s standard
-    input.
 
 Nelle's Pipeline: Checking Files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -363,6 +354,9 @@ Key Points
    used as the input to the second.
 -  The best way to use the shell is to use pipes to combine simple
    single-purpose programs (filters).
+
+Exercises
+^^^^^^^^^
 
 If we run ``sort`` on this file:
 

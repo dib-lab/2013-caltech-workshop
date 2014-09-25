@@ -10,6 +10,9 @@ Objectives
 -  Display the contents of a directory using the command line.
 -  Delete specified files and/or directories.
 
+Making Directories
+^^^^^^^^^^^^^^^^^^
+
 We now know how to explore files and directories, but how do we create
 them in the first place? Let's go back to Nelle's home directory,
 ``filesystem/users/nelle``, and use ``ls -F`` to see what it contains:
@@ -61,6 +64,9 @@ However, there's nothing in it yet:
 
     $ ls -F thesis
 
+Let's make a file
+^^^^^^^^^^^^^^^^^
+
 Let's change our working directory to ``thesis`` using ``cd``, then run
 a text editor called Nano to create a file called ``draft.txt``:
 
@@ -69,28 +75,28 @@ a text editor called Nano to create a file called ``draft.txt``:
     $ cd thesis
     $ nano draft.txt
 
-    Which Editor?
-    ^^^^^^^^^^^^^
+Which Editor?
+^^^^^^^^^^^^^
 
-    When we say, "``nano`` is a text editor," we really do mean "text":
-    it can only work with plain character data, not tables, images, or
-    any other human-friendly media. We use it in examples because almost
-    anyone can drive it anywhere without training, but please use
-    something more powerful for real work. On Unix systems (such as
-    Linux and Mac OS X), many programmers use
-    `Emacs <http://www.gnu.org/software/emacs/>`__ or
-    `Vim <http://www.vim.org/>`__ (both of which are completely
-    unintuitive, even by Unix standards), or a graphical editor such as
-    `Gedit <http://projects.gnome.org/gedit/>`__. On Windows, you may
-    wish to use `Notepad++ <http://notepad-plus-plus.org/>`__.
+When we say, "``nano`` is a text editor," we really do mean "text":
+it can only work with plain character data, not tables, images, or
+any other human-friendly media. We use it in examples because almost
+anyone can drive it anywhere without training, but please use
+something more powerful for real work. On Unix systems (such as
+Linux and Mac OS X), many programmers use
+`Emacs <http://www.gnu.org/software/emacs/>`__ or
+`Vim <http://www.vim.org/>`__ (both of which are completely
+unintuitive, even by Unix standards), or a graphical editor such as
+`Gedit <http://projects.gnome.org/gedit/>`__. On Windows, you may
+wish to use `Notepad++ <http://notepad-plus-plus.org/>`__.
 
-    No matter what editor you use, you will need to know where it
-    searches for and saves files. If you start it from the shell, it
-    will (probably) use your current working directory as its default
-    location. If you use your computer's start menu, it may want to save
-    files in your desktop or documents directory instead. You can change
-    this by navigating to another directory the first time you "Save
-    As..."
+No matter what editor you use, you will need to know where it
+searches for and saves files. If you start it from the shell, it
+will (probably) use your current working directory as its default
+location. If you use your computer's start menu, it may want to save
+files in your desktop or documents directory instead. You can change
+this by navigating to another directory the first time you "Save
+As..."
 
 Let's type in a few lines of text, then use Control-O to write our data
 to disk:
@@ -125,15 +131,15 @@ file is gone:
 
     $ ls
 
-    Deleting Is Forever
-    ^^^^^^^^^^^^^^^^^^^
+Deleting Is Forever
+^^^^^^^^^^^^^^^^^^^
 
-    Unix doesn't have a trash bin: when we delete files, they are
-    unhooked from the file system so that their storage space on disk
-    can be recycled. Tools for finding and recovering deleted files do
-    exist, but there's no guarantee they'll work in any particular
-    situation, since the computer may recycle the file's disk space
-    right away.
+Unix doesn't have a trash bin: when we delete files, they are
+unhooked from the file system so that their storage space on disk
+can be recycled. Tools for finding and recovering deleted files do
+exist, but there's no guarantee they'll work in any particular
+situation, since the computer may recycle the file's disk space
+right away.
 
 Let's re-create that file and then move up one directory to
 ``filesystem/users/nelle`` using ``cd ..``:
@@ -197,21 +203,21 @@ The directory is now empty, so ``rmdir`` can delete it:
 
     $ rmdir thesis
 
-    With Great Power Comes Great Responsibility
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+With Great Power Comes Great Responsibility
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    Removing the files in a directory just so that we can remove the
-    directory quickly becomes tedious. Instead, we can use ``rm`` with
-    the ``-r`` flag (which stands for "recursive"):
+Removing the files in a directory just so that we can remove the
+directory quickly becomes tedious. Instead, we can use ``rm`` with
+the ``-r`` flag (which stands for "recursive"):
 
-    ::
+::
 
-        $ rm -r thesis
+    $ rm -r thesis   # Warning!  This can set you six years behind.
 
-    This removes everything in the directory, then the directory itself.
-    If the directory contains sub-directories, ``rm -r`` does the same
-    thing to them, and so on. It's very handy, but can do a lot of
-    damage if used without care.
+This removes everything in the directory, then the directory itself.
+If the directory contains sub-directories, ``rm -r`` does the same
+thing to them, and so on. It's very handy, but can do a lot of
+damage if used without care.
 
 Let's create that directory and file one more time. (Note that this time
 we're running ``nano`` with the path ``thesis/draft.txt``, rather than
@@ -321,15 +327,15 @@ it does find the copy in ``thesis`` that we didn't delete:
     ls: cannot access quotes.txt: No such file or directory
     thesis/quotations.txt
 
-    Another Useful Abbreviation
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Another Useful Abbreviation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    The shell interprets the character ``~`` (tilde) at the start of a
-    path to mean "the current user's home directory". For example, if
-    Nelle's home directory is ``/home/nelle``, then ``~/data`` is
-    equivalent to ``/home/nelle/data``. This only works if it is the
-    first character in the path: ``here/there/~/elsewhere`` is *not*
-    ``/home/nelle/elsewhere``.
+The shell interprets the character ``~`` (tilde) at the start of a
+path to mean "the current user's home directory". For example, if
+Nelle's home directory is ``/home/nelle``, then ``~/data`` is
+equivalent to ``/home/nelle/data``. This only works if it is the
+first character in the path: ``here/there/~/elsewhere`` is *not*
+``/home/nelle/elsewhere``.
 
 Key Points
 ^^^^^^^^^^
@@ -339,6 +345,9 @@ Key Points
    really gone.
 -  Nano is a very simple text editor—please use something else for real
    work.
+
+Exercises
+^^^^^^^^^
 
 What is the output of the closing ``ls`` command in the sequence shown
 below?

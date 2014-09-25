@@ -14,6 +14,9 @@ Objectives
    call.
 -  Demonstrate the use of tab completion, and explain its advantages.
 
+Navigating the filesystem
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 The part of the operating system responsible for managing files and
 directories is called the `file system <../../gloss.html#filesystem>`__.
 It organizes our data into files, which hold information, and
@@ -92,24 +95,7 @@ directory <../../gloss.html#home-directory>`__:
 
     $ pwd
 
-::
-
     /users/nelle
-
-    Alphabet Soup
-    ^^^^^^^^^^^^^
-
-    If the command to find out who we are is ``whoami``, the command to
-    find out where we are ought to be called ``whereami``, so why is it
-    ``pwd`` instead? The usual answer is that in the early 1970s, when
-    Unix was first being developed, every keystroke counted: the devices
-    of the day were slow, and backspacing on a teletype was so painful
-    that cutting the number of keystrokes in order to cut the number of
-    typing mistakes was actually a win for usability. The reality is
-    that commands were added to Unix one by one, without any master
-    plan, by people who were immersed in its jargon. The result is as
-    inconsistent as the roolz uv Inglish speling, but we're stuck with
-    it now.
 
 To understand what a "home directory" is, let's have a look at how the
 file system as a whole is organized. At the top is the `root
@@ -228,15 +214,6 @@ path <../../gloss.html#relative-path>`__, i.e., it tells ``ls`` how to
 find something from where we are, rather than from the root of the file
 system.
 
-    Parameters vs. Arguments
-    ^^^^^^^^^^^^^^^^^^^^^^^^
-
-    According to
-    `Wikipedia <https://en.wikipedia.org/wiki/Parameter_(computer_programming)#Parameters_and_arguments>`__,
-    the terms `argument <../../gloss.html#argument>`__ and
-    `parameter <../../gloss.html#parameter>`__ mean slightly different
-    things. In practice, however, most people use them interchangeably
-    or inconsistently, so we will too.
 
 If we run ``ls -F /data`` (*with* a leading slash) we get a different
 answer, because ``/data`` is an `absolute
@@ -395,7 +372,8 @@ final straw was when she found herself creating a directory called
     for months and days, because the shell displays file and directory
     names in alphabetical order. If she used month names, December would
     come before July; if she didn't use leading zeroes, November ('11')
-    would come before July ('7').
+    would come before July ('7').  This is the purpose of 
+    `ISO standard 8601 Representation of dates and times <http://en.wikipedia.org/wiki/ISO_8601>`__
 
 Each of her physical samples is labelled according to her lab's
 convention with a unique ten-character ID, such as "NENE01729A". This is
@@ -454,6 +432,9 @@ Key Points
    required, and doesn't guarantee anything, but is normally used to
    indicate the type of data in the file.
 -  Most commands take options (flags) which begin with a '-'.
+
+Exercises
+^^^^^^^^^
 
 .. image:: img/filesystem-challenge.svg
 

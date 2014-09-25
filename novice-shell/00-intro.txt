@@ -9,6 +9,9 @@ Objectives
 -  Explain when and why command-line interfaces should be used instead
    of graphical interfaces.
 
+A Parable
+^^^^^^^^^
+
 Nelle Nemo, a marine biologist, has just returned from a six-month
 survey of the `North Pacific
 Gyre <http://en.wikipedia.org/wiki/North_Pacific_Gyre>`__, where she has
@@ -57,22 +60,13 @@ At a high level, computers do four things:
 -  communicate with each other; and
 -  interact with us.
 
-They can do the last of these in many different ways, including direct
-brain-computer links and speech interfaces. Since these are still in
-their infancy, most of us use windows, icons, mice, and pointers. These
-technologies didn't become widespread until the 1980s, but their roots
-go back to Doug Engelbart's work in the 1960s, which you can see in what
-has been called "`The Mother of All
-Demos <http://www.youtube.com/watch?v=a11JDLBXtPQ>`__\ ".
+They can do the last of these in many different ways;
+most of us use windows, icons, mice, and pointers. These
+technologies didn't become widespread until the 1980s, and,
+critically, *it is exceptionally difficult to automate mouseclicks.*
 
-Going back even further, the only way to interact with early computers
-was to rewire them. But in between, from the 1950s to the 1980s, most
-people used line printers. These devices only allowed input and output
-of the letters, numbers, and punctuation found on a standard keyboard,
-so programming languages and interfaces had to be designed around that
-constraint.
-
-This kind of interface is called a `command-line
+There exists an automatable, text-only, interactive interface 
+under the surface of our computers and phones.  Called a `command-line
 interface <../../gloss.html#command-line-interface>`__, or CLI, to
 distinguish it from the `graphical user
 interface <../../gloss.html#graphical-user-interface>`__, or GUI, that
@@ -91,9 +85,8 @@ execute them.
 
 A shell is a program like any other. What's special about it is that its
 job is to run other programs rather than to do calculations itself. The
-most popular Unix shell is Bash, the Bourne Again SHell (so-called
-because it's derived from a shell written by Stephen Bourne—this is what
-passes for wit among programmers). Bash is the default shell on most
+most popular Unix shell is bash.  
+Bash is the default shell on most
 modern implementations of Unix, and in most packages that provide
 Unix-like tools for Windows.
 
@@ -107,6 +100,12 @@ volumes of data automatically. In addition, the command line is often
 the easiest way to interact with remote machines. As clusters and cloud
 computing become more popular for scientific data crunching, being able
 to drive them is becoming a necessary skill.
+
+This no-frills text-only dialog with the computer can be your data file 
+handling robot, downloading hundreds or thousands of data files and 
+executing thousands or hundreds of thousands of programs on your behalf.
+
+You just need some magic words.
 
 Key Points
 ^^^^^^^^^^
