@@ -3,54 +3,45 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Automation Workshop Welcome
-===========================
-Welcome to the automation workshop at the 
-`6th Argonne Soils Meeting <http://press3.mcs.anl.gov/asmw14/>`__.
-
-Schedule
---------
+2013 CEMI Workshop at Caltech
+=============================
 
 ===============  =============================================================
 Day              Schedule
 ===============  =============================================================
-Friday 10/03     * 1:30pm-5:00pm:  Automating things with the shell 
+Tuesday 9/17     * 1:15pm: Igor Antoschechkin on local sequencing core
+   		 * 2pm Lecture: `Cloud computing etc. <_static/cemi-cloud-computing.pptx.pdf>`__
+		 * Afternoon lab 1: :doc:`amazon/index`
+   		 * 3:30pm lecture: `BLAST <_static/cemi-lecture-blast.pptx.pdf>`__
+		 * Afternoon lab 2: :doc:`tuesday`
+		 * Final lecture: `A belated welcome! <_static/cemi-lecture-welcome.pptx.pdf>`__
+Wednesday 9/18   * 9am: lecture, `Short read mapping <_static/cemi-lecture-mapping.pptx.pdf>`__
+	  	 * morning lab: :doc:`reads_and_qc`
+	  	 * morning lab 2: :doc:`bwa_mapping`
+		 * 1:15pm: assembly exercise
+		 * 2pm: lecture, `Assembly <_static/cemi-assembly.pptx.pdf>`__
+Thursday 9/19	 * lab: :doc:`assembly-lab` and :doc:`blastkit`
+	 	 * ~10am: lecture: `metagenome assembly <_static/2013-cemi-metag-assembly.pptx.pdf>`__
+	 	 * late morning lab: :doc:`prokka-annotation`
+		 * afternoon lab: :doc:`some-exercises`
+	 	 * afternoon lecture: `pipelines <_static/lecture5-pipelines.pdf>`__ and automation
+		 * tutorial: `the shell <https://github.com/swcarpentry/boot-camps/tree/2013-06-wise-beginners/shell>`__
 
-                   * :doc:`novice-shell/00-intro` (What is going on?)
-                   * :doc:`novice-shell/01-filedir` (cd,ls)
-                   * :doc:`novice-shell/02-create` (mv,rm,cp)
-                   * :doc:`novice-shell/03-pipefilter`
-                   * :doc:`novice-shell/04-loop` (for)
-                   * :doc:`novice-shell/05-script` (Doing Stuff)
-                   * :doc:`novice-shell/06-find` (find,grep)
-
-Saturday 10/04
-                 * 9:00 Introduction (Adina Howe)
-                 * 9:30 MEGAN (Daniel Huson)
-                 * 11:30 MG-RAST interface (Folker Meyer)
-                 * 12:30-1:30             Lunch
-                 * 1:30 KBase – metabolic models for metagenomes (Andreas Wilke)
-                 * 2:30-5:00pm Cloud computing to do more (Will Trimble)
-
-                   * Titus's notes on `BLAST <_static/cemi-lecture-blast.pptx.pdf>`__
-                   * Lab 1: instances: :doc:`amazon/index`
-                   * 3:30: lecture, `Short read mapping <_static/cemi-lecture-mapping.pptx.pdf>`__
-                   * Lab 2: :doc:`bwa_mapping`
-
+Friday 9/20	 * **Arms building first floor (Buwalda Room 151A)**
+       		 * 9am: lecture: `metagenome assembly <_static/2013-cemi-assembly-methods.pptx.pdf>`__
+       		 * morning: open lab time to work through pipelines (see especially `Kalamazoo Metagenome Assembly <https://khmer-protocols.readthedocs.org/en/latest/metagenomics/>`__ and :doc:`some-exercises`
+		 * :doc:`more-resources`
+		 * Assembly :doc:`scavenger-hunt`
+		 * **ends** 1pm; lunch with Titus, Chris, Yoshiki at Sansai.
 ===============  =============================================================
 
+For even more resources on these topics, check out the course website for the
+`GED's ANGUS course <http://ged.msu.edu/angus/>`__ which is run at MSU every summer.
 
-Additional Resources
---------------------
+Indices and tables
+==================
 
-These lessons were addapted from 
-`GED's ANGUS course <http://ged.msu.edu/angus/>`__ which is run at MSU every summer and teaches workshops
-like this.
-
-Software Carpentry maintains `computational training materials <http://software-carpentry.org/lessons.html>`__.
-
-
-.. * :ref:`genindex`
-.. * :ref:`modindex`
-.. * :ref:`search`
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
 
